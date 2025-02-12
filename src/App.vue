@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+onMounted(() => {
+  const savePath = localStorage.getItem('savePath') || '/'
+  // eslint-disable-next-line no-console
+  console.log(savePath)
+  router.push(savePath)
+})
+</script>
+
 <template>
   <el-config-provider namespace="ep">
     <BaseHeader />
@@ -20,15 +34,3 @@
   height: calc(100vh - var(--ep-menu-item-height) - 4px);
 }
 </style>
-<script setup lang="ts">
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-onMounted(() => {
-  const savePath = localStorage.getItem('savePath') || '/'
-  console.log(savePath);
-  router.push(savePath)
-})
-
-</script>

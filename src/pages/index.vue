@@ -1,4 +1,10 @@
+<script setup></script>
+
 <template>
-  <Logos my="4" />
-  <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
+  <div>
+    <h1>Home</h1>
+    <p>
+      Welcome to my website! I am a software engineer.
+    </p>
+  </div>
 </template>

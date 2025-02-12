@@ -19,6 +19,8 @@ import 'uno.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 
+routes[0].redirect = '/nav/Home'
+
 export const createApp = ViteSSG(
   App,
   {

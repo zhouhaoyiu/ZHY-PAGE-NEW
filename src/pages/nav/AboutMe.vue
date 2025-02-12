@@ -1,5 +1,5 @@
 <template>
   <div>
-    Navigation 2
+    AboutMe
   </div>
 </template>
