@@ -19,18 +19,6 @@ import 'uno.css'
 import 'element-plus/theme-chalk/src/message.scss'
 import 'element-plus/theme-chalk/src/message-box.scss'
 
-// if you do not need ssg:
-// import { createApp } from "vue";
-
-// const app = createApp(App);
-// app.use(createRouter({
-//   history: createWebHistory(),
-//   routes,
-// }))
-// // app.use(ElementPlus);
-// app.mount("#app");
-
-// https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
   {

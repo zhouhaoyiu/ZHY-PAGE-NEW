@@ -2,61 +2,31 @@
 import {
   Document,
   Menu as IconMenu,
-  Location,
   Setting,
 } from '@element-plus/icons-vue'
+import { ref } from 'vue';
+
+// 进入页面时获取当前路由
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const currentRoute = router.currentRoute.value.path
+const defaultActive = ref(currentRoute.split('/').slice(0, 3).join('/'))
 
 // const isCollapse = ref(true)
 function handleOpen(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
-  console.log(key, keyPath)
+  // console.log(key, keyPath)
+  localStorage.setItem('savePath', key)  
 }
 function handleClose(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
   console.log(key, keyPath)
 }
+
 </script>
 
 <template>
-  <el-menu
-    router
-    default-active="1"
-    class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
-  >
-    <el-sub-menu index="1">
-      <template #title>
-        <el-icon>
-          <Location />
-        </el-icon>
-        <span>Navigator One</span>
-      </template>
-      <el-menu-item-group>
-        <template #title>
-          <span>Group One</span>
-        </template>
-        <el-menu-item index="/nav/1/item-1">
-          item one
-        </el-menu-item>
-        <el-menu-item index="1-2">
-          item two
-        </el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">
-          item three
-        </el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title>
-          <span>item four</span>
-        </template>
-        <el-menu-item index="1-4-1">
-          item one
-        </el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
+  <el-menu router :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
     <el-menu-item index="/nav/2">
       <el-icon>
         <IconMenu />
@@ -78,7 +48,7 @@ function handleClose(key: string, keyPath: string[]) {
         <Setting />
       </el-icon>
       <template #title>
-        Navigator Four
+        Contact Me
       </template>
     </el-menu-item>
   </el-menu>
