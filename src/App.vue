@@ -17,7 +17,8 @@ onMounted(() => {
     <BaseHeader />
     <div class="main-container flex">
       <BaseSide />
-      <div w="full" py="4">
+      <div w="full" style="display: flex; justify-content: center; align-items: center;">
+        <!-- div中的内容水平垂直居中 -->
         <RouterView />
       </div>
     </div>

@@ -11,28 +11,30 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const currentRoute = router.currentRoute.value.path
-const defaultActive = ref(currentRoute.split('/').slice(0, 3).join('/'))
+const defaultActive = ref(currentRoute)
 
-// const isCollapse = ref(true)
-function handleOpen(key: string, _keyPath: string[]) {
-  // console.log(key, keyPath)
+function getActive(key: string, _keyPath: string[]) {
+  const a = localStorage.getItem('savePath')
+  console.log(a);
+}
+function handleOpen(key: string) {
+  console.log(key)
   localStorage.setItem('savePath', key)
 }
 function handleClose(_key: string, _keyPath: string[]) {}
 </script>
 
 <template>
-  <el-menu router :default-active="defaultActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
-    <el-menu-item index="/nav/Home">
+  <el-menu router :default-active="defaultActive" class="el-menu-v" @open="getActive" @close="handleClose">
+    <el-menu-item index="/nav/Home" route="/nav/Home" @click="handleOpen('/nav/Home')">
       <el-icon>
         <IconMenu />
       </el-icon>
       <template #title>
-        <!-- 个人主页 -->
         Home
       </template>
     </el-menu-item>
-    <el-menu-item index="/nav/AboutMe" disabled>
+    <el-menu-item index="/nav/AboutMe" disabled route="/nav/AboutMe" @click="handleOpen('/nav/AboutMe')">
       <el-icon>
         <Document />
       </el-icon>
@@ -40,7 +42,7 @@ function handleClose(_key: string, _keyPath: string[]) {}
         About Me
       </template>
     </el-menu-item>
-    <el-menu-item index="/nav/ContactMe">
+    <el-menu-item index="/nav/ContactMe" route="/nav/ContactMe" @click="handleOpen('/nav/ContactMe')">
       <el-icon>
         <Setting />
       </el-icon>
@@ -50,3 +52,9 @@ function handleClose(_key: string, _keyPath: string[]) {}
     </el-menu-item>
   </el-menu>
 </template>
+
+<style lang="scss" scoped>
+.el-menu-v {
+  width: 300px;
+}
+</style>
