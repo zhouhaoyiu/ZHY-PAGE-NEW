@@ -1,15 +1,12 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 // 进入页面时获取当前路由
-import { useRouter } from 'vue-router'
 
 // import { repository } from '~/../package.json'
 import { toggleDark } from '~/composables'
-
 </script>
 
 <template>
-  <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false"  font-bold >
+  <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" font-bold>
     <el-menu-item index="/nav/Home">
       <div class="flex items-center justify-center gap-2">
         <!-- <div class="text-xl" i-ep-element-plus /> -->

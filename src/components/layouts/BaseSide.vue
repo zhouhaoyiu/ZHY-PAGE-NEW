@@ -13,12 +13,12 @@ const router = useRouter()
 const currentRoute = router.currentRoute.value.path
 const defaultActive = ref(currentRoute)
 
-function getActive(key: string, _keyPath: string[]) {
-  const a = localStorage.getItem('savePath')
-  console.log(a);
+function getActive(_key: string, _keyPath: string[]) {
+  const _a = localStorage.getItem('savePath')
+  // console.log(a)
 }
 function handleOpen(key: string) {
-  console.log(key)
+  // console.log(key)
   localStorage.setItem('savePath', key)
 }
 function handleClose(_key: string, _keyPath: string[]) {}
@@ -34,7 +34,7 @@ function handleClose(_key: string, _keyPath: string[]) {}
         Home
       </template>
     </el-menu-item>
-    <el-menu-item index="/nav/AboutMe" disabled route="/nav/AboutMe" @click="handleOpen('/nav/AboutMe')">
+    <el-menu-item index="/nav/AboutMe" route="/nav/AboutMe" @click="handleOpen('/nav/AboutMe')">
       <el-icon>
         <Document />
       </el-icon>
