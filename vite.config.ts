@@ -5,8 +5,9 @@ import Unocss from 'unocss/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
-
 import { defineConfig } from 'vite'
+
+import Inspect from 'vite-plugin-inspect'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
   },
 
   plugins: [
+    Inspect(),
     Vue(),
 
     // https://github.com/posva/unplugin-vue-router
