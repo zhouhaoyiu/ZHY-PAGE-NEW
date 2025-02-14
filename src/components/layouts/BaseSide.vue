@@ -4,7 +4,7 @@ import {
   Menu as IconMenu,
   Setting,
 } from '@element-plus/icons-vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 // 进入页面时获取当前路由
 import { useRouter } from 'vue-router'
@@ -13,10 +13,15 @@ const router = useRouter()
 const currentRoute = router.currentRoute.value.path
 const defaultActive = ref(currentRoute)
 
-function getActive(_key: string, _keyPath: string[]) {
-  const _a = localStorage.getItem('savePath')
-  // console.log(a)
+onMounted(() => {
+  getActive()
+})
+
+function getActive() {
+  const savedPath = localStorage.getItem('savePath')
+  defaultActive.value = savedPath || currentRoute
 }
+
 function handleOpen(key: string) {
   // console.log(key)
   localStorage.setItem('savePath', key)

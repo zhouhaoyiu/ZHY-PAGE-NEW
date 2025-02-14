@@ -13,7 +13,7 @@
     "build": "vite build",
     "generate": "vite-ssg build",
     "lint": "eslint . --fix",
-    "preview": "vite preview",
+    "preview": "vite build && vite preview",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
