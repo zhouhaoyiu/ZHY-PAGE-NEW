@@ -14,7 +14,9 @@ import { toggleDark } from '~/composables'
       </div>
     </el-menu-item>
     <el-menu-item>
-      Github
+      <a target="_blank" href="https://www.github.com/zhouhaoyiu">
+        Github
+      </a>
     </el-menu-item>
     <!-- <el-menu-item index="/nav/AboutMe" disabled route="/nav/AboutMe" @click="handleOpen('/nav/AboutMe')">
       About Me

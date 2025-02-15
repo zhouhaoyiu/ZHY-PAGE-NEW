@@ -1,6 +1,19 @@
 <script setup lang="ts">
+import { ElMessage, ElMessageBox } from 'element-plus'
+import type { Action } from 'element-plus'
+
 function openBigImage(index: number) {
-  console.log(index)
+  ElMessageBox.alert(`${index}`, 'Title', {
+    // if you want to disable its autofocus
+    // autofocus: false,
+    confirmButtonText: 'OK',
+    callback: (action: Action) => {
+      ElMessage({
+        type: 'info',
+        message: `action: ${action}`,
+      })
+    },
+  })
 }
 </script>
 
@@ -39,7 +52,8 @@ function openBigImage(index: number) {
       0 4px 6px -1px rgb(0 0 0 / 0.1),
       0 2px 4px -2px rgb(0 0 0 / 0.1);
     &:hover {
-      outline: 1px solid #000;
+      transform: scale(1.02);
+      outline: 1px solid #c4c4c4;
     }
   }
 }

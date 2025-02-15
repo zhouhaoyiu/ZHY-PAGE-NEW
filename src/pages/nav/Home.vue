@@ -8,7 +8,7 @@
       );user-select: none !important"
   >
     <div id="page1">
-      <h1 class="text-black">
+      <h1>
         Hello.
       </h1>
       <p style="font-weight:500;font-size:2.2em;">
@@ -38,6 +38,10 @@
       <p>
         Thank you for your visit.
       </p>
+
+      <div>
+        <img src="./zhy.svg" alt="ZHY Logo" style="height: 320px;width: 480px;margin-top: 20px;">
+      </div>
     </div>
   </div>
 </template>
