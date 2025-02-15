@@ -9,5 +9,8 @@
         </a>
       </el-button>
     </p>
+    <p>
+      You can also add me Wechat
+    </p>
   </div>
 </template>

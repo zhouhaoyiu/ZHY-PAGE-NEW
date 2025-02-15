@@ -29,9 +29,10 @@ const cardInfo = [
 
 <template>
   <div h-full class="thoughts">
-    <h1>THOUGHTS</h1>
+    <h1>Thoughts</h1>
     <div class="card-box">
       <el-card v-for="(i, iIndex) in cardInfo" :key="iIndex" style="width: 220px; " class="card" shadow="hover">
+        <!-- eslint-disable-next-line vue/no-useless-template-attributes -->
         <template #header class="card-header">
           <div>
             <span>{{ i.header }}</span>
@@ -67,7 +68,6 @@ const cardInfo = [
         box-sizing: border-box;
         background-color: rgb(0 88 255 / 81%);
         color: white;
-       
       }
       &:hover {
         transform: scale(1.02);

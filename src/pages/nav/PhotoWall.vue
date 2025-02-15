@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ElMessage, ElMessageBox } from 'element-plus'
 import type { Action } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 
 function openBigImage(index: number) {
   ElMessageBox.alert(`${index}`, 'Title', {
