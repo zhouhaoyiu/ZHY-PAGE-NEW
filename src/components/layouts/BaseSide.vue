@@ -66,6 +66,12 @@ function handleOpen(key: string) {
         LittleTools
       </template>
     </el-menu-item>
+    <el-menu-item index="/nav/Thoughts" route="/nav/Thoughts" @click="handleOpen('/nav/Thoughts')">
+      <el-icon><MagicStick /></el-icon>
+      <template #title>
+        Thoughts
+      </template>
+    </el-menu-item>
   </el-menu>
 </template>
 

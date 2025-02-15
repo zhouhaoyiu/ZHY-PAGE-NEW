@@ -11,7 +11,7 @@ const pdfUrl = new URL('./zhy.pdf', import.meta.url).href
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .about-me {
   width: 100%;
   padding: 0 20%;
@@ -22,7 +22,8 @@ const pdfUrl = new URL('./zhy.pdf', import.meta.url).href
 
 /* 美化滚动条 */
 .about-me::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
+  margin-right: 3px;
 }
 
 .about-me::-webkit-scrollbar-track {
