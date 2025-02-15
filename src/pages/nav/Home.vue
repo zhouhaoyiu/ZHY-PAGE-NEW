@@ -5,7 +5,7 @@
         #ffd5c3,
         #cf8bf355,
         #e6abfd
-      );"
+      );user-select: none !important"
   >
     <div id="page1">
       <h1>

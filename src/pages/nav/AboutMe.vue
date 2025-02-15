@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import VuePdfEmbed from 'vue-pdf-embed'
-// 修改 PDF 文件路径
-import zhyPdf from './zhy.pdf'
+
+// 使用动态导入
+const pdfUrl = new URL('./zhy.pdf', import.meta.url).href
 </script>
 
 <template>
   <div class="about-me">
-    <VuePdfEmbed :source="zhyPdf" />
+    <VuePdfEmbed :source="pdfUrl" />
   </div>
 </template>
 

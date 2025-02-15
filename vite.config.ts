@@ -29,8 +29,6 @@ export default defineConfig({
   plugins: [
     Inspect(),
     Vue(),
-
-    // https://github.com/posva/unplugin-vue-router
     VueRouter({
       extensions: ['.vue', '.md'],
       dts: 'src/typed-router.d.ts',
@@ -48,15 +46,15 @@ export default defineConfig({
       ],
       dts: 'src/components.d.ts',
     }),
-
-    // https://github.com/antfu/unocss
-    // see uno.config.ts for config
     Unocss(),
   ],
 
   ssr: {
     // TODO: workaround until they support native ESM
     noExternal: ['element-plus'],
+  },
+  build: {
+    chunkSizeWarningLimit: 100000000,
   },
 
   assetsInclude: ['**/*.pdf'],

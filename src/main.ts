@@ -1,5 +1,5 @@
 import type { UserModule } from './types'
-import { ViteSSG } from 'vite-ssg'
+import Previewer from 'element-plus'
 
 // import "~/styles/element/index.scss";
 
@@ -9,11 +9,12 @@ import { ViteSSG } from 'vite-ssg'
 
 // or use cdn, uncomment cdn link in `index.html`
 
+import { ViteSSG } from 'vite-ssg'
 import { routes } from 'vue-router/auto-routes'
+
 import App from './App.vue'
 
 import '~/styles/index.scss'
-
 import 'uno.css'
 // If you want to use ElMessage, import it.
 import 'element-plus/theme-chalk/src/message.scss'
@@ -28,9 +29,8 @@ export const createApp = ViteSSG(
     base: import.meta.env.BASE_URL,
   },
   (ctx) => {
-    // install all modules under `modules/`
     Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
       .forEach(i => i.install?.(ctx))
-    // ctx.app.use(Previewer)
+    ctx.app.use(Previewer)
   },
 )
