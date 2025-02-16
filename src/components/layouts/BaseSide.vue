@@ -3,6 +3,7 @@ import {
   Document,
   Menu as IconMenu,
   MagicStick,
+  Paperclip,
   PictureRounded,
   Setting,
 } from '@element-plus/icons-vue'
@@ -67,7 +68,7 @@ function handleOpen(key: string) {
       </template>
     </el-menu-item>
     <el-menu-item index="/nav/Thoughts" route="/nav/Thoughts" @click="handleOpen('/nav/Thoughts')">
-      <el-icon><MagicStick /></el-icon>
+      <el-icon><Paperclip /></el-icon>
       <template #title>
         Thoughts
       </template>

@@ -12,7 +12,7 @@ const cardInfo = [
     header: '我去过的地方',
     info: {
       tag: 'p',
-      text: ['北京 上海'],
+      text: ['北京 上海 杭州 苏州 南京 成都 石家庄 太原 广州 常州 西安 拉萨 沈阳 秦皇岛 天津 合肥'],
     },
     footer: 'Trip',
   },

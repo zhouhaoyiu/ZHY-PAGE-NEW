@@ -1,11 +1,7 @@
 <template>
   <div
-    class="flex items-center justify-center gap-2" w="full" h="full" style="background: linear-gradient(
-        to right,
-        #ffd5c3,
-        #cf8bf355,
-        #e6abfd
-      );user-select: none !important"
+    class="flex items-center justify-center gap-2" w="full" h="full"
+    style="user-select: none !important;background: var(--home-bg-color);"
   >
     <div id="page1">
       <h1>

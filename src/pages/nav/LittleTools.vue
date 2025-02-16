@@ -25,13 +25,13 @@
     display: flex;
     flex-wrap: wrap;
     .tool {
-      box-shadow: 0px -2px 10px 0px #f9f9f9;
+      box-shadow: var(--tool-bg-shadow);
       margin: 14px 20px;
       width: 280px;
       height: 80px;
       border: 1px solid #e2e8f080;
       transition: all 0.2s ease-out;
-      background: linear-gradient(135deg, #fff, #f9f9f980);
+      background: var(--tool-bg-color);
       border-radius: 10px;
       &:hover {
         transform: scale(1.05);
