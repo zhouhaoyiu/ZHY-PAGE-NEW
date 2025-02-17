@@ -32,7 +32,7 @@ console.log(imageUrlArr);
 
 <template>
   <div class="photo-wall h-full w-full">
-    <h1>PhotoWall</h1>
+    <h1>Photo Wall</h1>
     <div class="flex-center flex flex-row flex-wrap flex-justify-center">
       <!-- <svg v-for="(i, index) in 16" :key="index" width="500px" height="395px" xmlns="http://www.w3.org/2000/svg" class="svg" @click="openBigImage(i)">
         <rect rx="0" ry="0" width="100%" height="100%" fill="url(#diagonalGradient)" /><defs>

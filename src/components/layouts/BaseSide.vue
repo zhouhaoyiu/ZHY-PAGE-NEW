@@ -58,13 +58,13 @@ function handleOpen(key: string) {
     <el-menu-item index="/nav/PhotoWall" route="/nav/PhotoWall" @click="handleOpen('/nav/PhotoWall')">
       <el-icon><PictureRounded /></el-icon>
       <template #title>
-        PhotoWall
+        Photo Wall
       </template>
     </el-menu-item>
     <el-menu-item index="/nav/LittleTools" route="/nav/LittleTools" @click="handleOpen('/nav/LittleTools')">
       <el-icon><MagicStick /></el-icon>
       <template #title>
-        LittleTools
+        Little Tools
       </template>
     </el-menu-item>
     <el-menu-item index="/nav/Thoughts" route="/nav/Thoughts" @click="handleOpen('/nav/Thoughts')">

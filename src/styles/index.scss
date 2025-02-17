@@ -1,18 +1,22 @@
 // import dark theme
-@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+@use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
 
 :root {
   --ep-color-primary: #42a4ffba;
+  // --ep-color-primary: #122470;
   --ep-menu-hover-bg-color: #f5f5f5;
   --home-bg-color: linear-gradient(to right, #ffd5c3, #cf8bf355, #e6abfd);
   --tool-bg-color: linear-gradient(135deg, #fff, #f9f9f980);
   --tool-bg-shadow: 0px -2px 10px 0px #f9f9f9;
+  --ep-text-color-primary: #0d164f;
 }
 
 body {
   // font-family: Consolas, 'Courier New', monospace;
   // font-family: 'Verdana,Microsoft Yahei,SimSun,Arial,sans-serif';
   font-family:
+    LatoWebThin,
+    Lato,
     ui-sans-serif,
     system-ui,
     sans-serif,
@@ -21,14 +25,31 @@ body {
     Segoe UI Symbol,
     Noto Color Emoji;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   margin: 0;
 }
 
 h1 {
+  display: block;
+  font-weight: 50;
+  line-height: 0.8em;
+  font-size: 70px;
   font-weight: 100;
+  user-select: none;
+  line-height: 0.8em;
   // opacity: .3;
+  letter-spacing: 0.05em;
+  text-rendering: optimizeSpeed;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 a {
