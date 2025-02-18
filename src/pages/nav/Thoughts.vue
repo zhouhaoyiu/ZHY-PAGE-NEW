@@ -20,7 +20,7 @@ const cardInfo = [
     header: '关于世界的运行',
     info: {
       tag: 'p',
-      text: ['世界运行，在我的思考中就是保存与变化'],
+      text: ['关于世界运行的思考'],
     },
     footer: 'About World',
   },

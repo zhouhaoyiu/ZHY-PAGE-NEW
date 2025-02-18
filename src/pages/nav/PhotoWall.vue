@@ -1,20 +1,20 @@
 <script setup lang="ts">
 // import type { Action } from 'element-plus'
 // import { ElMessage, ElMessageBox } from 'element-plus'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const imageArr = [
   './1.jpg',
   './2.jpg',
-  './3.jpg'
+  './3.jpg',
 ]
-let imageUrlArr = [] as string[]
- imageArr.forEach((i) => {
-  const imageUrl = ref('null');
-  imageUrl.value = new URL(`${i}`, import.meta.url).href;
-  imageUrlArr.push(imageUrl.value);
+const imageUrlArr = [] as string[]
+imageArr.forEach((i) => {
+  const imageUrl = ref('null')
+  imageUrl.value = new URL(`${i}`, import.meta.url).href
+  imageUrlArr.push(imageUrl.value)
 })
-console.log(imageUrlArr);
+// console.log(imageUrlArr)
 // function openBigImage(index: number) {
 //   ElMessageBox.alert(`${index}`, 'Title', {
 //     // if you want to disable its autofocus
@@ -45,9 +45,11 @@ console.log(imageUrlArr);
           {{ i }}
         </text>
       </svg> -->
-      <el-image v-for="(i, index) in imageUrlArr" :key="index" width="500px" height="395px" style="width: 500px; height: 395px"
-        class="svg" :src="i" preview-teleported :preview-src-list="imageUrlArr" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" show-progress :initial-index="4"
-        fit="cover" />
+      <el-image
+        v-for="(i, index) in imageUrlArr" :key="index" style="width: 330px; height: 220px"
+        class="svg" :src="i" :preview-src-list="imageUrlArr" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" show-progress preview-teleported :initial-index="index"
+        fit="cover"
+      />
     </div>
   </div>
 </template>

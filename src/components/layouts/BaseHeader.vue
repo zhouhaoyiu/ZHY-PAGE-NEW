@@ -10,9 +10,16 @@ import { toggleDark } from '~/composables'
     <el-menu-item index="/nav/Home">
       <div class="flex items-center justify-center gap-2">
         <!-- <div class="text-xl" i-ep-element-plus /> -->
-        <span font-400 color="$ep-color-primary"> 周浩宇 HaoYu Zhou </span>
+        <!-- <span font-400 color="$ep-color-primary"> 周浩宇 HaoYu Zhou </span> -->
+        <span font-400 color="$ep-color-primary"> Mystic </span>
       </div>
     </el-menu-item>
+    <el-menu-item>
+      <a target="_blank" href="https://www.cursor.com/cn">
+        Cursor
+      </a>
+    </el-menu-item>
+
     <el-menu-item>
       <a target="_blank" href="https://www.github.com/zhouhaoyiu">
         Github

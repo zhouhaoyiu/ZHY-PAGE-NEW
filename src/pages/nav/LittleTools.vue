@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { Picture as IconPicture } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 const toolBox = [
   {
     icon: '',
     title: 'UUID生成工具',
     description: 'UUID在线生成工具',
-    to: 'nav/LittleTools/uuid',
-    disable: false
-  }
+    to: '/nav/Tools/uuid',
+    disable: false,
+  },
 ]
 const refToolBox = ref(toolBox)
 
-function handleGoTool(url:string){
-  console.info((url));
+function handleGoTool(url: string) {
+  router.push(url)
 }
 </script>
 
@@ -21,12 +25,14 @@ function handleGoTool(url:string){
   <div class="little-tools">
     <h1>Little Tools</h1>
     <div class="tool-box">
-      <div @click="handleGoTool(o.to)" v-for="(o, oIndex) in refToolBox" :key="oIndex" class="tool">
+      <div v-for="(o, oIndex) in refToolBox" :key="oIndex" class="tool" @click="handleGoTool(o.to)">
         <div class="icon-box">
           <el-image class="icon" src="" alt="">
             <template #error>
               <div class="image-slot">
-                <el-icon><icon-picture /></el-icon>
+                <el-icon>
+                  <IconPicture />
+                </el-icon>
               </div>
             </template>
           </el-image>
@@ -85,6 +91,15 @@ function handleGoTool(url:string){
           width: 48px;
           height: 48px;
           border-radius: 10px;
+
+          .image-slot {
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
         }
       }
 
@@ -96,19 +111,22 @@ function handleGoTool(url:string){
         padding: 0 2%;
         justify-content: center;
         align-items: start;
+
         // background-color: blanchedalmond;
-        p{
+        p {
           margin: 0;
         }
-        .info-title{
+
+        .info-title {
           font-size: 16px;
           line-height: 16px;
           padding-bottom: 4px;
         }
+
         .info-des {
           font-size: 14px;
           line-height: 14px;
-          padding-top:4px;
+          padding-top: 4px;
           color: gray;
           font-weight: 400;
           color: #9aabb8;

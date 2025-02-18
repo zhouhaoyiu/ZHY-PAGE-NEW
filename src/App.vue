@@ -17,7 +17,10 @@ onMounted(() => {
     <BaseHeader />
     <div class="main-container flex">
       <BaseSide />
-      <div w="full" style="display: flex; justify-content: center; align-items: center;">
+      <div
+        w="full"
+        style="display: flex; justify-content: center; align-items: center;background-color: var( --router-view-bg-color);"
+      >
         <!-- div中的内容水平垂直居中 -->
         <RouterView />
       </div>
