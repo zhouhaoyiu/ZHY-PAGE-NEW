@@ -39,7 +39,7 @@
     "typescript": "^5.7.3",
     "unocss": "^66.0.0",
     "unplugin-vue-components": "^0.27.5",
-    "unplugin-vue-router": "^0.10.9",
+    "unplugin-vue-router": "^0.11.2",
     "vite": "^6.1.1",
     "vite-ssg": "^25.2.0",
     "vue-tsc": "^2.1.10"
