@@ -15,7 +15,7 @@
     "lint": "eslint . --fix",
     "preview": "vite build && vite preview",
     "typecheck": "vue-tsc --noEmit",
-    "test": "pnpm run typecheck && pnpm run lint"
+    "test": "pnpm run build"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",

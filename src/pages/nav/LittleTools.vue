@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Picture as IconPicture } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -7,10 +6,24 @@ const router = useRouter()
 
 const toolBox = [
   {
-    icon: '',
+    icon: 'uuid',
     title: 'UUID生成工具',
     description: 'UUID在线生成工具',
     to: '/nav/Tools/uuid',
+    disable: false,
+  },
+  {
+    icon: '高',
+    title: '高考倒计时',
+    description: '高考倒计时工具',
+    to: '/nav/Tools/gaokao',
+    disable: false,
+  },
+  {
+    icon: '键',
+    title: '键盘',
+    description: 'html模拟的键盘',
+    to: '/nav/Tools/keyboard',
     disable: false,
   },
 ]
@@ -30,9 +43,11 @@ function handleGoTool(url: string) {
           <el-image class="icon" src="" alt="">
             <template #error>
               <div class="image-slot">
-                <el-icon>
-                  <IconPicture />
-                </el-icon>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <!-- 圆角矩形框里是uuid字符 -->
+                  <!-- <rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2" /> -->
+                  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="8px" fill="currentColor">{{ o.icon }}</text>
+                </svg>
               </div>
             </template>
           </el-image>

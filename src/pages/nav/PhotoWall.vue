@@ -14,20 +14,6 @@ imageArr.forEach((i) => {
   imageUrl.value = new URL(`${i}`, import.meta.url).href
   imageUrlArr.push(imageUrl.value)
 })
-// console.log(imageUrlArr)
-// function openBigImage(index: number) {
-//   ElMessageBox.alert(`${index}`, 'Title', {
-//     // if you want to disable its autofocus
-//     // autofocus: false,
-//     confirmButtonText: 'OK',
-//     callback: (action: Action) => {
-//       ElMessage({
-//         type: 'info',
-//         message: `action: ${action}`,
-//       })
-//     },
-//   })
-// }
 </script>
 
 <template>

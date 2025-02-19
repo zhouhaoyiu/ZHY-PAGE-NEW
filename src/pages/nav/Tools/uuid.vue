@@ -20,35 +20,54 @@ function generateUUIDs() {
     uuidArray.value.push(uuid)
   }
 }
+function copy(text: string) {
+  const input = document.createElement('input')
+  input.value = text
+  document.body.appendChild(input)
+  input.select()
+  document.execCommand('copy')
+  document.body.removeChild(input)
+}
 </script>
 
 <template>
   <div class="uuid">
     <h1>UUID</h1>
-    <div>
+    <div class="input-box">
       <label>生成数量:</label>
       <el-select v-model="quantity" placeholder="生成数量" prefix-icon="el-icon-plus" type="number">
         <el-option v-for="i in 100" :key="i" :label="`${i}个`" :value="i" />
       </el-select>
     </div>
-    <div>
+    <div class="input-box">
       <label>是否大写:</label>
       <el-checkbox v-model="isUpperCase">
         大写
       </el-checkbox>
     </div>
-    <div>
+    <div class="input-box">
       <label>分隔符:</label>
-      <el-input v-model="separator" placeholder="分隔符" prefix-icon="el-icon-link" />
+      <el-input v-model="separator" placeholder="分割每一段uuid" c>
+        <!-- <template #prepend>分隔符</template> -->
+      </el-input>
     </div>
     <el-button type="primary" @click="generateUUIDs">
       生成
     </el-button>
     <div>
-      <div v-for="(uuid, index) in uuidArray" :key="index" flex items-center justify-center>
-        <h2> {{ index + 1 }} </h2>
-        &nbsp; &nbsp; &nbsp;
-        {{ uuid }}
+      <div v-for="(uuid, index) in uuidArray" :key="index" style="margin:10px 0" flex items-center justify-center>
+        <el-input style="width: 500px;min-width: max-content;" :value="uuid" readonly>
+          <template #prepend>
+            <span type="primary">
+              {{ index + 1 }}
+            </span>
+          </template>
+          <template #append>
+            <div style="cursor: pointer;" type="primary" @click="copy(uuid)">
+              复制
+            </div>
+          </template>
+        </el-input>
       </div>
     </div>
   </div>
@@ -59,13 +78,30 @@ function generateUUIDs() {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .input-box {
+    width: 400px;
+    display: flex;
+    // 靠左居中对齐
+    align-items: center;
+    justify-content: flex-start;
+    min-width: max-content;
+    margin: 10px 0;
+  }
 }
 
 label {
+  // 靠左居中对齐
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100px;
+  font-size: 16px;
   font-weight: bold;
   margin-right: 10px;
 }
