@@ -31,7 +31,7 @@ function copy(text: string) {
 </script>
 
 <template>
-  <div class="uuid">
+  <div class="uuid" flex items-center>
     <h1>UUID</h1>
     <div class="input-box">
       <label>生成数量:</label>
@@ -80,9 +80,7 @@ function copy(text: string) {
   overflow-y: auto;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  display: flex;
   flex-direction: column;
-  align-items: center;
 
   .input-box {
     width: 400px;
