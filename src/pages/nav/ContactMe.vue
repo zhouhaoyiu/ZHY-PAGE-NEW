@@ -12,5 +12,18 @@
     <p>
       You can also add me Wechat
     </p>
+    <p>
+      You can also add me QQ
+    </p>
+    <p>
+     Bilibili
+    </p>
   </div>
 </template>
+
+<style lang="scss"scoped>
+p{
+  font-size: 20px;
+  margin: 10px;
+}
+</style>

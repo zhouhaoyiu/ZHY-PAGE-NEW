@@ -2,7 +2,7 @@
 import VuePdfEmbed from 'vue-pdf-embed'
 
 // 使用动态导入
-const pdfUrl = new URL('./zhy.pdf', import.meta.url).href
+const pdfUrl = new URL('/zhy.pdf', import.meta.url).href
 </script>
 
 <template>
