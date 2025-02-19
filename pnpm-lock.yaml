@@ -4172,7 +4172,7 @@ snapshots:
 
   bundle-require@5.0.0(esbuild@0.23.1):
     dependencies:
-      esbuild: 0.23.1
+      esbuild: 0.25.0
       load-tsconfig: 0.2.5
 
   cac@6.7.14: {}
@@ -4902,7 +4902,7 @@ snapshots:
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
       debug: 4.4.0
-      esbuild: 0.23.1
+      esbuild: 0.25.0
       jiti: 2.0.0-beta.3
       jiti-v1: jiti@1.21.7
       pathe: 1.1.2
@@ -5846,7 +5846,7 @@ snapshots:
 
   tsx@4.19.2:
     dependencies:
-      esbuild: 0.23.1
+      esbuild: 0.25.0
       get-tsconfig: 4.8.1
     optionalDependencies:
       fsevents: 2.3.3
@@ -6032,7 +6032,7 @@ snapshots:
 
   vite@6.1.0(@types/node@20.17.10)(jiti@1.21.7)(sass@1.85.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1):
     dependencies:
-      esbuild: 0.24.2
+      esbuild: 0.25.0
       postcss: 8.5.2
       rollup: 4.34.7
     optionalDependencies:
