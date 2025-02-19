@@ -14,7 +14,8 @@
     "generate": "vite-ssg build",
     "lint": "eslint . --fix",
     "preview": "vite build && vite preview",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "test": "pnpm run typecheck && pnpm run lint"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
