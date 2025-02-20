@@ -16,9 +16,8 @@ onMounted(() => {
 
 function applyStatus(e: KeyboardEvent, pressed = false) {
   e.preventDefault()
-//   const { keyCode } = e 修复已弃用的keyCode
-    const { code } = e
-    const keys = document.querySelectorAll(`div.key[data-keyCode="${code}"]`)
+  const { keyCode } = e as any
+    const keys = document.querySelectorAll(`div.key[data-keyCode="${keyCode}"]`)
   if (keys) {
     keys.forEach((key) => {
       if (pressed) {
