@@ -43,7 +43,8 @@ const cardInfo = [
           </div>
         </template>
         <div class="textbox">
-          <!-- eslint-disable-next-line vue/no-useless-template-attributes -->
+          <!-- vue/no-v-text-v-html-on-component -->
+          <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
           <el-text v-for="(j, jIndex) in i.info.text" :key="jIndex" :tag="i.info.tag" v-html="j" />
         </div>
         <template #footer>

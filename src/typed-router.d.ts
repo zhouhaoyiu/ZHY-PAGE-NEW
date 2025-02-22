@@ -25,6 +25,7 @@ declare module 'vue-router/auto-routes' {
     '/nav/LittleTools': RouteRecordInfo<'/nav/LittleTools', '/nav/LittleTools', Record<never, never>, Record<never, never>>,
     '/nav/PhotoWall': RouteRecordInfo<'/nav/PhotoWall', '/nav/PhotoWall', Record<never, never>, Record<never, never>>,
     '/nav/Thoughts': RouteRecordInfo<'/nav/Thoughts', '/nav/Thoughts', Record<never, never>, Record<never, never>>,
+    '/nav/Tools/colorChina': RouteRecordInfo<'/nav/Tools/colorChina', '/nav/Tools/colorChina', Record<never, never>, Record<never, never>>,
     '/nav/Tools/gaokao': RouteRecordInfo<'/nav/Tools/gaokao', '/nav/Tools/gaokao', Record<never, never>, Record<never, never>>,
     '/nav/Tools/keyboard': RouteRecordInfo<'/nav/Tools/keyboard', '/nav/Tools/keyboard', Record<never, never>, Record<never, never>>,
     '/nav/Tools/uuid': RouteRecordInfo<'/nav/Tools/uuid', '/nav/Tools/uuid', Record<never, never>, Record<never, never>>,

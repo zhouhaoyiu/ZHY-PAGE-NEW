@@ -26,6 +26,13 @@ const toolBox = [
     to: '/nav/Tools/keyboard',
     disable: false,
   },
+  {
+    icon: '中',
+    title: '中国传统色彩',
+    description: '中国传统色彩大全',
+    to: '/nav/Tools/colorChina',
+    disable: false,
+  },
 ]
 const refToolBox = ref(toolBox)
 

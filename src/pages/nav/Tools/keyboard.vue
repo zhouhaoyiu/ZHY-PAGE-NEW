@@ -10,14 +10,14 @@ onMounted(() => {
     applyStatus(e, false)
   })
 
-  console.log(document.querySelector('input'))
   document.querySelector('input')!.value = 'Leopold FC750R PD'
 })
 
+// 这个函数用来给按键添加按下和松开的效果
 function applyStatus(e: KeyboardEvent, pressed = false) {
   e.preventDefault()
   const { keyCode } = e as any
-    const keys = document.querySelectorAll(`div.key[data-keyCode="${keyCode}"]`)
+  const keys = document.querySelectorAll(`div.key[data-keyCode="${keyCode}"]`)
   if (keys) {
     keys.forEach((key) => {
       if (pressed) {
@@ -146,8 +146,8 @@ function applyStatus(e: KeyboardEvent, pressed = false) {
         </div>
         <div data-keyCode="50" class="key normal light">
           <div class="display">
-              <span>@</span>
-              <span>2</span>
+            <span>@</span>
+            <span>2</span>
           </div>
         </div>
         <div data-keyCode="51" class="key normal light">

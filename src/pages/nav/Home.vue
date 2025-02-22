@@ -41,3 +41,9 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+p {
+  font-size: 18px;
+}
+</style>
