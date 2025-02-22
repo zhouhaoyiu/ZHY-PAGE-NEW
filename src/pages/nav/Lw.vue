@@ -1,23 +1,15 @@
-<script setup lang="ts">
-// 
+<script lang="ts" setup>
 const lwFiles = import.meta.glob('/public/lw/*.caj')
 const lwFilesKeys = Object.keys(lwFiles)
 const lwFilesToUrl = lwFilesKeys.map((key) => {
-  return key.split('/').pop()  
+  return key.split('/').pop()
 })
-// 如果是线上环境，打包后的public文件夹会被放在根目录下，所以在开发环境和线上环境的路径不一样
 function downloadFile(fileName: string) {
-  if (import.meta.env.DEV) {
-    const a = document.createElement('a')
-    a.href = `/public/lw/${fileName}`
-    a.download = fileName
-    a.click()
-  } else {
-    const a = document.createElement('a')
-    a.href = `/lw/${fileName}`
-    a.download = fileName
-    a.click()
-  }
+  const href = import.meta.env.DEV ? `/public/lw/${fileName}` : `/lw/${fileName}`
+  const a = document.createElement('a')
+  a.href = href
+  a.download = fileName
+  a.click()
 }
 </script>
 
@@ -53,7 +45,7 @@ function downloadFile(fileName: string) {
 
     .lw-item {
       width: 500px;
-      height: 50px;
+      height: 40px;
       padding: 10px;
       // 不变省略号
       white-space: nowrap;

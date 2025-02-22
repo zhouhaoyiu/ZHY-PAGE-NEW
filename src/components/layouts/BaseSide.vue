@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {
   Document,
+  Files,
   Menu as IconMenu,
   MagicStick,
   Paperclip,
@@ -74,9 +75,9 @@ function handleOpen(key: string) {
       </template>
     </el-menu-item>
     <el-menu-item index="/nav/Lw" route="/nav/Lw" @click="handleOpen('/nav/Lw')">
-      <el-icon><Paperclip /></el-icon>
+      <el-icon><Files /></el-icon>
       <template #title>
-        Lw
+        Paper
       </template>
     </el-menu-item>
   </el-menu>
