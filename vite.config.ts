@@ -54,8 +54,8 @@ export default defineConfig({
     noExternal: ['element-plus'],
   },
   build: {
-    chunkSizeWarningLimit: 100000000,
+    chunkSizeWarningLimit: 100000000000,
   },
 
-  assetsInclude: ['**/*.pdf'],
+  assetsInclude: ['**/*.pdf','**/*.caj'],
 })

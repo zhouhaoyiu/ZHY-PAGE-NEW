@@ -73,6 +73,12 @@ function handleOpen(key: string) {
         Thoughts
       </template>
     </el-menu-item>
+    <el-menu-item index="/nav/Lw" route="/nav/Lw" @click="handleOpen('/nav/Lw')">
+      <el-icon><Paperclip /></el-icon>
+      <template #title>
+        Lw
+      </template>
+    </el-menu-item>
   </el-menu>
 </template>
 
