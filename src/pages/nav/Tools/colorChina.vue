@@ -1,6 +1,20 @@
 <script setup lang="ts">
 // ./colorBox.ts
+import { ElMessage } from 'element-plus'
 import { colorBox } from './colorBox'
+
+function copy(hex: string, name: string) {
+  if (!navigator.clipboard) {
+    ElMessage.error('复制失败')
+    return
+  }
+  navigator.clipboard.writeText(hex).then(() => {
+    // 提示
+    ElMessage.success(`已复制 ${name} 的hex 值 ${hex}`)
+  }).catch(() => {
+    ElMessage.error('复制失败')
+  })
+}
 </script>
 
 <template>
@@ -11,10 +25,11 @@ import { colorBox } from './colorBox'
     <div class="color-box">
       <div v-for="colorRow in colorBox" :key="colorRow[0].name" class="box-in">
         <div v-for="color in colorRow" :key="color.name" :style="{ backgroundColor: color.hex }" class="color-self">
-          <div>{{ color.name }}</div>
-          <div class="color-hex">
+          <!-- hover时显示点击复制 -->
+          <div class="color-hex" :title="`点击复制${color.name}`" @click="copy(color.hex, color.name)">
             {{ color.hex }}
           </div>
+          <div>{{ color.name }}</div>
         </div>
       </div>
     </div>
@@ -54,7 +69,7 @@ import { colorBox } from './colorBox'
       .color-self {
         font-weight: 600;
         border-radius: 3px;
-        width: calc(100% / 10);
+        width: calc(100% / 8);
         min-width: 110px;
         height: 60px;
         padding: 5px;
@@ -72,7 +87,9 @@ import { colorBox } from './colorBox'
           padding: 2px;
           width: calc(100% - 4px);
           text-align: start;
+          cursor: pointer;
         }
+        // 修改title的样式
       }
     }
   }

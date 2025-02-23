@@ -20,7 +20,6 @@ function downloadFile(fileName: string) {
     </h1>
     <div class="lw-box">
       <div v-for="lw in lwFilesToUrl" :key="lw" class="lw-item" @click="downloadFile(lw as string)">
-        <!-- 下载caj文件 -->
         {{ lw }}
       </div>
     </div>
