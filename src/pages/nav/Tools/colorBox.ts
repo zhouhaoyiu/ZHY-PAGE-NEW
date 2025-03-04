@@ -409,6 +409,10 @@ export const colorBox: TColorBox = [
       name: '鸭黄',
       hex: '#faff72',
     },
+    {
+      name: '杏黄',
+      hex: '#ffa631',
+    },
   ],
 ]
 
