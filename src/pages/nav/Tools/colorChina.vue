@@ -41,8 +41,6 @@ function copy(hex: string, name: string) {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;

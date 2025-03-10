@@ -29,6 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/nav/Tools/colorChina': RouteRecordInfo<'/nav/Tools/colorChina', '/nav/Tools/colorChina', Record<never, never>, Record<never, never>>,
     '/nav/Tools/gaokao': RouteRecordInfo<'/nav/Tools/gaokao', '/nav/Tools/gaokao', Record<never, never>, Record<never, never>>,
     '/nav/Tools/keyboard': RouteRecordInfo<'/nav/Tools/keyboard', '/nav/Tools/keyboard', Record<never, never>, Record<never, never>>,
+    '/nav/Tools/regexDoctor': RouteRecordInfo<'/nav/Tools/regexDoctor', '/nav/Tools/regexDoctor', Record<never, never>, Record<never, never>>,
     '/nav/Tools/uuid': RouteRecordInfo<'/nav/Tools/uuid', '/nav/Tools/uuid', Record<never, never>, Record<never, never>>,
   }
 }

@@ -3,35 +3,48 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
-const toolBox = [
+interface ItoolBox {
+  icon: string
+  title: string
+  description: string
+  to: string
+  disabled: boolean
+}
+const toolBox: ItoolBox[] = [
   {
     icon: 'uuid',
     title: 'UUID生成工具',
     description: 'UUID在线生成工具',
     to: '/nav/Tools/uuid',
-    disable: false,
+    disabled: false,
   },
   {
     icon: '高',
     title: '高考倒计时',
     description: '高考倒计时工具',
     to: '/nav/Tools/gaokao',
-    disable: false,
+    disabled: false,
   },
   {
     icon: '键',
     title: '键盘',
     description: 'html模拟的键盘',
     to: '/nav/Tools/keyboard',
-    disable: false,
+    disabled: false,
   },
   {
     icon: '中',
     title: '中国传统色彩',
     description: '中国传统色彩大全',
     to: '/nav/Tools/colorChina',
-    disable: false,
+    disabled: false,
+  },
+  {
+    icon: '正',
+    title: '正则测试',
+    description: '正则表达式测试工具',
+    to: '/nav/Tools/regexDoctor',
+    disabled: false,
   },
 ]
 const refToolBox = ref(toolBox)
@@ -53,7 +66,10 @@ function handleGoTool(url: string) {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <!-- 圆角矩形框里是uuid字符 -->
                   <!-- <rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2" /> -->
-                  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="8px" fill="currentColor">{{ o.icon }}</text>
+                  <text
+                    x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="8px"
+                    fill="currentColor"
+                  >{{ o.icon }}</text>
                 </svg>
               </div>
             </template>

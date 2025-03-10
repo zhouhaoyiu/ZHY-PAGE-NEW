@@ -413,7 +413,71 @@ export const colorBox: TColorBox = [
       name: '杏黄',
       hex: '#ffa631',
     },
+    {
+      name: '橙黄',
+      hex: '#ffa400',
+    },
+    {
+      name: '橙色',
+      hex: '#fa8c35',
+    },
+    {
+      name: '杏红',
+      hex: '#ff8c31',
+    },
+    {
+      name: '橘黄',
+      hex: '#ff8936',
+    },
+    {
+      name: '橘红',
+      hex: '#ff7500',
+    },
+    {
+      name: '藤黄',
+      hex: '#ffb61e',
+    },
+    {
+      name: '姜黄',
+      hex: '#ffc773',
+    },
+    {
+      name: '雌黄',
+      hex: '#ffc64b',
+    },
+    {
+      name: '赤金',
+      hex: '#f2be45',
+    },
+    {
+      name: '缃色',
+      hex: '#f0c239',
+    },
+    {
+      name: '雄黄',
+      hex: '#e9bb1d',
+    },
+    {
+      name: '秋香色',
+      hex: '#d9b611',
+    },
+    {
+      name: '金色',
+      hex: '#eacd76',
+    },
   ],
+  [
+    {
+      name: '牙色',
+      hex: '#eedeb0',
+    },
+  ],
+  [
+    {
+      name: '银白',
+      hex: '#e9e7ef',
+    },
+  ]
 ]
 
 type TColorBox = Array<Array<{ name: string, hex: string }>>

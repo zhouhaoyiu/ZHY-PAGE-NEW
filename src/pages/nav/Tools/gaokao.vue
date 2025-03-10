@@ -3,10 +3,13 @@ import { onUnmounted, ref } from 'vue'
 
 const gaokaoTime = ref('2025-06-07 08:00:00')
 const nowTime = ref(new Date().getTime())
+const timeFS = ref('2025-03-21 00:00:00')
 const time = ref(0)
+const time2 = ref(0)
 const timer = setInterval(() => {
   nowTime.value = new Date().getTime()
   time.value = new Date(gaokaoTime.value).getTime() - nowTime.value
+  time2.value = new Date(timeFS.value).getTime() - nowTime.value
   if (time.value <= 0) {
     clearInterval(timer)
   }
@@ -23,6 +26,10 @@ function formatTime(time: number) {
   const second = Math.floor(time / 1000 % 60)
   return `${day} 天 ${hour} 时 ${minute} 分 ${second} 秒`
 }
+
+function formatTime2(time: number) {
+  return Math.floor(time / 1000)
+}
 </script>
 
 <template>
@@ -33,6 +40,15 @@ function formatTime(time: number) {
     <div v-show="time > 0" font-size="20px">
       {{ formatTime(time) }}
     </div>
+    <h1>
+      2025-02-21
+    </h1>
+    <div v-show="time2 > 0" font-size="20px">
+      {{ formatTime(time2) }}
+    </div>
+    <div font-size="20px">
+      {{ formatTime2(time2) }} 秒
+    </div>
   </div>
 </template>
 
@@ -41,8 +57,6 @@ function formatTime(time: number) {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
