@@ -40,8 +40,8 @@ function match() {
 
     // 结束计时并计算执行时间
     const endTime = performance.now()
-    executionTime.value = Number.parseFloat((endTime - startTime).toFixed(2))
-
+    executionTime.value = Number.parseFloat((endTime - startTime).toFixed(10))
+    console.log('executionTime', executionTime.value);
     // 计算每1000字符执行时间（DPK）
     const textLength = text.value.length
     if (textLength > 0) {
@@ -56,7 +56,8 @@ function match() {
     resultGroup.value = res?.groups || '' // 被命名的捕获组 理论上结果
   }
   catch (e) {
-    result.value = e.message
+    console.log(e);
+    result.value = (e as any).message
     executionTime.value = 0
     dpkTime.value = 0
   }
