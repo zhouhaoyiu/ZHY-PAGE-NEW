@@ -12,8 +12,8 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1(vue@3.5.13(typescript@5.7.3))
       '@vueuse/core':
-        specifier: ^12.0.0
-        version: 12.0.0(typescript@5.7.3)
+        specifier: ^13.0.0
+        version: 13.0.0(vue@3.5.13(typescript@5.7.3))
       element-plus:
         specifier: ^2.9.5
         version: 2.9.5(vue@3.5.13(typescript@5.7.3))
@@ -962,8 +962,8 @@ packages:
   '@types/web-bluetooth@0.0.16':
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
 
-  '@types/web-bluetooth@0.0.20':
-    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+  '@types/web-bluetooth@0.0.21':
+    resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
   '@typescript-eslint/eslint-plugin@8.26.0':
     resolution: {integrity: sha512-cLr1J6pe56zjKYajK6SSSre6nl1Gj6xDp1TY0trpgPzjVbgDwd09v2Ws37LABxzkicmUjhEeg/fAUjPJJB1v5Q==}
@@ -1219,20 +1219,24 @@ packages:
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
 
-  '@vueuse/core@12.0.0':
-    resolution: {integrity: sha512-C12RukhXiJCbx4MGhjmd/gH52TjJsc3G0E0kQj/kb19H3Nt6n1CA4DRWuTdWWcaFRdlTe0npWDS942mvacvNBw==}
+  '@vueuse/core@13.0.0':
+    resolution: {integrity: sha512-rkgb4a8/0b234lMGCT29WkCjPfsX0oxrIRR7FDndRoW3FsaC9NBzefXg/9TLhAgwM11f49XnutshM4LzJBrQ5g==}
+    peerDependencies:
+      vue: ^3.5.0
 
   '@vueuse/core@9.13.0':
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
 
-  '@vueuse/metadata@12.0.0':
-    resolution: {integrity: sha512-Yzimd1D3sjxTDOlF05HekU5aSGdKjxhuhRFHA7gDWLn57PRbBIh+SF5NmjhJ0WRgF3my7T8LBucyxdFJjIfRJQ==}
+  '@vueuse/metadata@13.0.0':
+    resolution: {integrity: sha512-TRNksqmvtvqsuHf7bbgH9OSXEV2b6+M3BSN4LR5oxWKykOFT9gV78+C2/0++Pq9KCp9KQ1OQDPvGlWNQpOb2Mw==}
 
   '@vueuse/metadata@9.13.0':
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
 
-  '@vueuse/shared@12.0.0':
-    resolution: {integrity: sha512-3i6qtcq2PIio5i/vVYidkkcgvmTjCqrf26u+Fd4LhnbBmIT6FN8y6q/GJERp8lfcB9zVEfjdV0Br0443qZuJpw==}
+  '@vueuse/shared@13.0.0':
+    resolution: {integrity: sha512-9MiHhAPw+sqCF/RLo8V6HsjRqEdNEWVpDLm2WBRW2G/kSQjb8X901sozXpSCaeLG0f7TEfMrT4XNaA5m1ez7Dg==}
+    peerDependencies:
+      vue: ^3.5.0
 
   '@vueuse/shared@9.13.0':
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
@@ -3724,7 +3728,7 @@ snapshots:
 
   '@types/web-bluetooth@0.0.16': {}
 
-  '@types/web-bluetooth@0.0.20': {}
+  '@types/web-bluetooth@0.0.21': {}
 
   '@typescript-eslint/eslint-plugin@8.26.0(@typescript-eslint/parser@8.26.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
@@ -4130,14 +4134,12 @@ snapshots:
 
   '@vue/shared@3.5.13': {}
 
-  '@vueuse/core@12.0.0(typescript@5.7.3)':
+  '@vueuse/core@13.0.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
-      '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 12.0.0
-      '@vueuse/shared': 12.0.0(typescript@5.7.3)
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 13.0.0
+      '@vueuse/shared': 13.0.0(vue@3.5.13(typescript@5.7.3))
       vue: 3.5.13(typescript@5.7.3)
-    transitivePeerDependencies:
-      - typescript
 
   '@vueuse/core@9.13.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
@@ -4149,15 +4151,13 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@vueuse/metadata@12.0.0': {}
+  '@vueuse/metadata@13.0.0': {}
 
   '@vueuse/metadata@9.13.0': {}
 
-  '@vueuse/shared@12.0.0(typescript@5.7.3)':
+  '@vueuse/shared@13.0.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       vue: 3.5.13(typescript@5.7.3)
-    transitivePeerDependencies:
-      - typescript
 
   '@vueuse/shared@9.13.0(vue@3.5.13(typescript@5.7.3))':
     dependencies:
