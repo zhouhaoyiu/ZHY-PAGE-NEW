@@ -41,7 +41,6 @@ function match() {
     // 结束计时并计算执行时间
     const endTime = performance.now()
     executionTime.value = Number.parseFloat((endTime - startTime).toFixed(10))
-    console.log('executionTime', executionTime.value);
     // 计算每1000字符执行时间（DPK）
     const textLength = text.value.length
     if (textLength > 0) {

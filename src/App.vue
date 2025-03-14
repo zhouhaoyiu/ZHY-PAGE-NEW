@@ -7,7 +7,6 @@ const router = useRouter()
 onMounted(() => {
   const savePath = localStorage.getItem('savePath') || '/'
   // eslint-disable-next-line no-console
-  console.log(savePath)
   router.push(savePath)
 })
 </script>
