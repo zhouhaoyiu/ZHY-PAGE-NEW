@@ -80,6 +80,15 @@ function handleOpen(key: string) {
         Paper
       </template>
     </el-menu-item>
+    <el-menu-item index="/nav/projectBoard" route="/nav/projectBoard" @click="handleOpen('/nav/projectBoard')">
+      <el-icon>
+        <!-- GITHUB -->
+        <div i-ri-github-fill />
+      </el-icon>
+      <template #title>
+        Github Project Board
+      </template>
+    </el-menu-item>
   </el-menu>
 </template>
 
