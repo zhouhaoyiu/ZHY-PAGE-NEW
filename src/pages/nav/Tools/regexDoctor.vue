@@ -55,7 +55,7 @@ function match() {
     resultGroup.value = res?.groups || '' // 被命名的捕获组 理论上结果
   }
   catch (e) {
-    console.log(e);
+    console.error(e)
     result.value = (e as any).message
     executionTime.value = 0
     dpkTime.value = 0

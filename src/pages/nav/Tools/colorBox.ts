@@ -477,7 +477,7 @@ export const colorBox: TColorBox = [
       name: '银白',
       hex: '#e9e7ef',
     },
-  ]
+  ],
 ]
 
 type TColorBox = Array<Array<{ name: string, hex: string }>>

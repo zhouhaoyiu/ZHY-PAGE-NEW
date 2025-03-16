@@ -52,6 +52,15 @@ const refToolBox = ref(toolBox)
 function handleGoTool(url: string) {
   router.push(url)
 }
+
+function getHashColor(hash: string) {
+  const color = hash.split('').reduce((acc, cur) => {
+    return acc + cur.charCodeAt(0)
+  }, Math.random() * 360)
+  return {
+    backgroundColor: `hsl(${color % 360}, 100%, 90%)`,
+  }
+}
 </script>
 
 <template>
@@ -60,7 +69,7 @@ function handleGoTool(url: string) {
     <div class="tool-box">
       <div v-for="(o, oIndex) in refToolBox" :key="oIndex" class="tool" @click="handleGoTool(o.to)">
         <div class="icon-box">
-          <el-image class="icon" src="" alt="">
+          <el-image class="icon" src="" alt="" :style="getHashColor(o.icon)">
             <template #error>
               <div class="image-slot">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -125,7 +134,6 @@ function handleGoTool(url: string) {
         align-items: center;
 
         .icon {
-          background-color: pink;
           width: 48px;
           height: 48px;
           border-radius: 10px;
