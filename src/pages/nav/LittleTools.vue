@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { getHashColor } from './tool'
 
 const router = useRouter()
 interface ItoolBox {
@@ -51,15 +52,6 @@ const refToolBox = ref(toolBox)
 
 function handleGoTool(url: string) {
   router.push(url)
-}
-
-function getHashColor(hash: string) {
-  const color = hash.split('').reduce((acc, cur) => {
-    return acc + cur.charCodeAt(0)
-  }, Math.random() * 360)
-  return {
-    backgroundColor: `hsl(${color % 360}, 100%, 90%)`,
-  }
 }
 </script>
 

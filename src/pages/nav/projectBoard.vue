@@ -1,5 +1,6 @@
 <script lang='ts' setup>
 import { ElMessageBox } from 'element-plus'
+import { getHashColor } from './tool'
 
 interface project {
   icon: string
@@ -11,7 +12,7 @@ interface project {
 const projectBox: project[] = [
   {
     icon: 'T',
-    name: 'tygs',
+    name: 'Tygs',
     description: '太原供水集团水表井数据库',
     url: 'https://github.com/zhouhaoyiu/tygs',
     fullDescription: '太原供水集团水表井数据库是用于存储展示太原供水集团城北有限公司各种水表井的数据库，请使用pnpm或yarn进行包管理',
@@ -24,15 +25,6 @@ const projectBox: project[] = [
     fullDescription: '我的个人主页',
   },
 ]
-
-function getHashColor(hash: string) {
-  const color = hash.split('').reduce((acc, cur) => {
-    return acc + cur.charCodeAt(0)
-  }, Math.random() * 360)
-  return {
-    backgroundColor: `hsl(${color % 360}, 100%, 90%)`,
-  }
-}
 
 function openDetail(f: string) {
   ElMessageBox.alert(f, '详细介绍', {
@@ -104,9 +96,11 @@ function openDetail(f: string) {
       background: var(--tool-bg-color);
       border-radius: 10px;
       cursor: pointer;
+
       .info-box {
         display: flex;
         flex-direction: row;
+
         .icon-box {
           width: 25%;
           border-radius: 10px 0 0 10px;
@@ -129,6 +123,7 @@ function openDetail(f: string) {
             }
           }
         }
+
         .info-box {
           display: flex;
           flex-direction: column;
@@ -161,6 +156,7 @@ function openDetail(f: string) {
           }
         }
       }
+
       .link-box {
         display: flex;
         justify-content: space-around;
