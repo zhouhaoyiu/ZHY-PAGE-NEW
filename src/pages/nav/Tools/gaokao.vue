@@ -3,7 +3,7 @@ import { onUnmounted, ref } from 'vue'
 
 const gaokaoTime = ref('2025-06-07 08:00:00')
 const nowTime = ref(new Date().getTime())
-const timeFS = ref('2025-03-21 00:00:00')
+const timeFS = ref('2025-03-28 00:00:00')
 const time = ref(0)
 const time2 = ref(0)
 const timer = setInterval(() => {
@@ -41,7 +41,7 @@ function formatTime2(time: number) {
       {{ formatTime(time) }}
     </div>
     <h1>
-      2025-02-21
+      2025-03-28
     </h1>
     <div v-show="time2 > 0" font-size="20px">
       {{ formatTime(time2) }}
