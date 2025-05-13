@@ -41,6 +41,13 @@ const toolBox: ItoolBox[] = [
     disabled: false,
   },
   {
+    icon: '日',
+    title: '日本传统色彩',
+    description: '日本传统色彩大全',
+    to: '/nav/Tools/colorJapan',
+    disabled: false,
+  },
+  {
     icon: '正',
     title: '正则测试',
     description: '正则表达式测试工具',

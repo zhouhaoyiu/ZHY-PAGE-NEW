@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // ./colorBox.ts
 import { ElMessage } from 'element-plus'
-import { colorBoxChina } from './colorBox'
+import { colorBoxJapan } from './colorBox'
 
 function copy(hex: string, name: string) {
   if (!navigator.clipboard) {
@@ -20,10 +20,10 @@ function copy(hex: string, name: string) {
 <template>
   <div class="color-china">
     <h1>
-      China-colors
+      Japan-colors
     </h1>
     <div class="color-box">
-      <div v-for="colorRow in colorBoxChina" :key="colorRow[0].name" class="box-in">
+      <div v-for="colorRow in colorBoxJapan" :key="colorRow[0].name" class="box-in">
         <div v-for="color in colorRow" :key="color.name" :style="{ backgroundColor: color.hex }" class="color-self">
           <!-- hover时显示点击复制 -->
           <div class="color-hex" :title="`点击复制${color.name}`" @click="copy(color.hex, color.name)">
