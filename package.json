@@ -34,7 +34,7 @@
     "@types/node": "^22.15.17",
     "@unocss/eslint-plugin": "^66.1.1",
     "@vitejs/plugin-vue": "^5.2.4",
-    "eslint": "^9.26.0",
+    "eslint": "^9.27.0",
     "eslint-plugin-format": "^1.0.1",
     "sass": "^1.88.0",
     "typescript": "^5.8.3",
