@@ -89,6 +89,15 @@ function handleOpen(key: string) {
         Github Project Board
       </template>
     </el-menu-item>
+    <el-menu-item index="/nav/Ai" route="/nav/Ai" @click="handleOpen('/nav/Ai')">
+      <el-icon>
+        <!-- GITHUB -->
+        <div i-ri-github-fill />
+      </el-icon>
+      <template #title>
+        Ai
+      </template>
+    </el-menu-item>
   </el-menu>
 </template>
 
