@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <div>
-    123
+  <div class="ai-page">
+    <h1>AI TOOL</h1>
   </div>
 </template>
 
