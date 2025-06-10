@@ -172,7 +172,6 @@ function handleGoTool(url: string) {
           font-size: 14px;
           line-height: 14px;
           padding-top: 4px;
-          color: gray;
           font-weight: 400;
           color: #9aabb8;
           word-break: keep-all;
