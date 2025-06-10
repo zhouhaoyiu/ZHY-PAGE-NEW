@@ -92,7 +92,7 @@ function handleOpen(key: string) {
     <el-menu-item index="/nav/Ai" route="/nav/Ai" @click="handleOpen('/nav/Ai')">
       <el-icon>
         <!-- GITHUB -->
-        <div i-ri-github-fill />
+        <div i-ri-chat-1-line />
       </el-icon>
       <template #title>
         Ai

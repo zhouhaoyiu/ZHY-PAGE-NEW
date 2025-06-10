@@ -76,7 +76,7 @@ function handleGoTool(url: string) {
                   <!-- <rect x="0" y="0" width="24" height="24" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="2" /> -->
                   <text
                     x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="8px"
-                    fill="currentColor"
+                    fill="currentColor" class="svgtext"
                   >{{ o.icon }}</text>
                 </svg>
               </div>
@@ -96,91 +96,93 @@ function handleGoTool(url: string) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .little-tools {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+}
 
-  .tool-box {
-    display: flex;
-    flex-wrap: wrap;
+.tool-box {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    .tool {
-      display: flex;
-      box-shadow: var(--tool-bg-shadow);
-      margin: 14px 20px;
-      width: 280px;
-      height: 80px;
-      border: 1px solid #e2e8f080;
-      transition: all 0.2s ease-out;
-      background: var(--tool-bg-color);
-      border-radius: 10px;
+.tool-box .tool {
+  display: flex;
+  box-shadow: var(--tool-bg-shadow);
+  margin: 14px 20px;
+  width: 280px;
+  height: 80px;
+  border: 1px solid #e2e8f080;
+  transition: all 0.2s ease-out;
+  background: var(--tool-bg-color);
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-      &:hover {
-        transform: scale(1.05);
-        outline: 1px solid #000;
-      }
+.tool-box .tool:hover {
+  transform: scale(1.05);
+  outline: 1px solid #000;
+}
 
-      cursor: pointer;
+.tool-box .tool .icon-box {
+  width: 25%;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-      .icon-box {
-        // background-color: #000;
-        width: 25%;
-        border-radius: 10px 0 0 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.tool-box .tool .icon-box .icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+}
 
-        .icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 10px;
+.tool-box .tool .icon-box .icon .image-slot {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-          .image-slot {
-            width: 100%;
-            height: 100%;
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-      }
+.tool-box .tool .info-box {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  border-radius: 0 10px 10px 0;
+  padding: 0 2%;
+  justify-content: center;
+  align-items: start;
+}
 
-      .info-box {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        border-radius: 0 10px 10px 0;
-        padding: 0 2%;
-        justify-content: center;
-        align-items: start;
+.tool-box .tool .info-box p {
+  margin: 0;
+}
 
-        // background-color: blanchedalmond;
-        p {
-          margin: 0;
-        }
+.info-title {
+  font-size: 16px;
+  line-height: 16px;
+  padding-bottom: 4px;
+}
 
-        .info-title {
-          font-size: 16px;
-          line-height: 16px;
-          padding-bottom: 4px;
-        }
+.info-des {
+  font-size: 14px;
+  line-height: 14px;
+  padding-top: 4px;
+  font-weight: 400;
+  color: #9aabb8;
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-        .info-des {
-          font-size: 14px;
-          line-height: 14px;
-          padding-top: 4px;
-          font-weight: 400;
-          color: #9aabb8;
-          word-break: keep-all;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-  }
+/* 暗黑模式适配 */
+.svgtext {
+  fill: #000;
 }
 </style>

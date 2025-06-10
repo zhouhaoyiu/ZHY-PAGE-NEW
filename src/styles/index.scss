@@ -10,6 +10,10 @@
   --tool-bg-shadow: 0px -2px 10px 0px #f9f9f9;
   --ep-text-color-primary: #0d164f;
   --router-view-bg-color: #f9f9f9;
+  
+  // 过渡动画时间
+  --transition-duration: 0.3s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -27,6 +31,7 @@ body {
     Noto Color Emoji;
 
   margin: 0;
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
 h1 {
@@ -57,6 +62,8 @@ a {
   color: var(--ep-color-primary);
   // 下划线
   text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-timing),
+              text-decoration var(--transition-duration) var(--transition-timing);
 }
 a:hover,
 li:hover {
@@ -90,4 +97,85 @@ code {
   --tool-bg-color: black;
   --tool-bg-shadow: none;
   --router-view-bg-color: black;
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+// 全局过渡动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--transition-duration) var(--transition-timing);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// 滑动过渡
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+// 缩放过渡
+.scale-fade-enter-active,
+.scale-fade-leave-active {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+.scale-fade-enter-from,
+.scale-fade-leave-to {
+  transform: scale(0.95);
+  opacity: 0;
+}
+
+// 列表过渡
+.list-enter-active,
+.list-leave-active {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// 元素过渡
+.el-card,
+.el-button,
+.el-input,
+.el-select,
+.el-menu-item {
+  transition: all var(--transition-duration) var(--transition-timing);
+}
+
+// 滚动条过渡
+::-webkit-scrollbar-thumb {
+  transition: background-color var(--transition-duration) var(--transition-timing);
+}
+
+// 卡片悬浮过渡
+.el-card {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// 按钮悬浮过渡
+.el-button {
+  &:hover {
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 }

@@ -1,4 +1,5 @@
 <script lang='ts' setup>
+import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 
 // 用户输入的正则表达式
@@ -56,7 +57,8 @@ function match() {
   }
   catch (e) {
     console.error(e)
-    result.value = (e as any).message
+    ElMessage.error((e as any).message)
+    result.value = ''
     executionTime.value = 0
     dpkTime.value = 0
   }
@@ -84,82 +86,98 @@ function example() {
   match()
   // expect: [123, 456, 789]
 }
+
+function copyResult() {
+  if (result.value) {
+    navigator.clipboard.writeText(result.value.toString())
+    ElMessage.success('已复制到剪贴板')
+  }
+}
 </script>
 
 <template>
   <div class="regex-doctor">
-    <h1>
-      regexDoctor
-    </h1>
-    <div>
-      <div my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" for="regex-input" mr-2 font-bold class="label-text">regex-input</label>
-        <el-input
-          id="regex-input" v-model="regex" placeholder="please input regex" :autosize="{
-            minRows: 5,
-          }" type="textarea" class="input-box"
-        />
-      </div>
+    <h1>regexDoctor</h1>
 
-      <!-- 正则表达式选项 -->
-      <div my-4 w-xl flex items-center justify-center>
-        <label mr-2 font-bold style="width: 100px;" class="label-text">正则表达式选项：</label>
-        <div class="options-container">
-          <el-checkbox v-model="regexOptions.global" label="全局匹配 (g)" />
-          <el-checkbox v-model="regexOptions.ignoreCase" label="忽略大小写 (i)" />
-          <el-checkbox v-model="regexOptions.multiline" label="多行模式 (m)" />
+    <div class="content">
+      <div class="input-section">
+        <div class="input-group">
+          <label for="regex-input">正则表达式</label>
+          <el-input
+            id="regex-input"
+            v-model="regex"
+            placeholder="请输入正则表达式，例如：[0-9]+"
+            :autosize="{ minRows: 3 }"
+            type="textarea"
+            class="input-box"
+          />
+        </div>
+
+        <div class="options-group">
+          <label>匹配选项</label>
+          <div class="options-container">
+            <el-checkbox v-model="regexOptions.global" label="全局匹配 (g)" />
+            <el-checkbox v-model="regexOptions.ignoreCase" label="忽略大小写 (i)" />
+            <el-checkbox v-model="regexOptions.multiline" label="多行模式 (m)" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="text-input">测试文本</label>
+          <el-input
+            id="text-input"
+            v-model="text"
+            placeholder="请输入要测试的文本"
+            :autosize="{ minRows: 5 }"
+            type="textarea"
+            class="input-box"
+          />
+        </div>
+
+        <div class="button-group">
+          <el-button type="primary" @click="match">
+            测试匹配
+          </el-button>
+          <el-button @click="reset">
+            重置
+          </el-button>
+          <el-button @click="example">
+            示例
+          </el-button>
         </div>
       </div>
 
-      <div my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" for="text-input" mr-2 font-bold class="label-text">text-input</label>
-        <el-input
-          id="text-input" v-model="text" placeholder="please input text" :autosize="{
-            minRows: 5,
-          }" type="textarea" class="input-box"
-        />
-      </div>
-      <div my-4 w-xl flex items-center justify-center>
-        <el-button type="primary" @click="match">
-          match
-        </el-button>
-        <el-button type="primary" @click="reset">
-          reset
-        </el-button>
-        <el-button type="primary" @click="example">
-          example
-        </el-button>
-      </div>
-      <div my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" for="result" mr-2 font-bold class="label-text">result</label>
-        <el-input
-          id="result" v-model="result" placeholder="result" :autosize="{
-            minRows: 5,
-          }" type="textarea" class="input-box"
-        />
-      </div>
-
-      <!-- 执行时间显示 -->
-      <div my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" mr-2 font-bold class="label-text">执行时间：</label>
-        <div class="time-display">
-          {{ executionTime }} 毫秒
+      <div class="result-section">
+        <div class="result-header">
+          <h3>匹配结果</h3>
+          <el-button v-if="result" type="primary" link @click="copyResult">
+            复制结果
+          </el-button>
         </div>
-      </div>
 
-      <!-- 每1000字符执行时间显示 -->
-      <div v-if="dpkTime > 0" my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" mr-2 font-bold class="label-text">每千字符时间：</label>
-        <div class="time-display">
-          {{ dpkTime }} 毫秒/千字符
-        </div>
-      </div>
+        <div class="result-content">
+          <el-input
+            v-model="result"
+            type="textarea"
+            :autosize="{ minRows: 5 }"
+            readonly
+            class="result-box"
+          />
 
-      <!-- 匹配数量显示 -->
-      <div v-if="resultCount > 0" my-4 w-xl flex items-center justify-center>
-        <label style="white-space: nowrap; width: 100px;" mr-2 font-bold class="label-text">匹配数量：</label>
-        <div class="count-display">
-          {{ resultCount }}
+          <div class="stats">
+            <div v-if="resultCount > 0" class="stat-item">
+              <span class="label">匹配数量：</span>
+              <span class="value">{{ resultCount }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="label">执行时间：</span>
+              <span class="value">{{ executionTime }} 毫秒</span>
+            </div>
+            <div v-if="dpkTime > 0" class="stat-item">
+              <span class="label">每千字符时间：</span>
+              <span class="value">{{ dpkTime }} 毫秒/千字符</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -170,32 +188,130 @@ function example() {
 .regex-doctor {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 20px;
+  background-color: var(--ep-bg-color);
+  color: var(--ep-text-color-primary);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 24px;
+    color: var(--ep-text-color-primary);
+    margin: 0;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.input-section,
+.result-section {
+  background: var(--ep-bg-color-overlay);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--ep-box-shadow-light);
+}
+
+.input-group,
+.options-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--ep-text-color-primary);
+  }
 }
 
 .input-box {
-  width: 500px;
+  width: 100%;
+  font-family: monospace;
 }
 
 .options-container {
-  width: 500px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.label-text {
-  font-size: 16px;
-  color: #333;
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
 }
 
-.time-display,
-.count-display {
-  width: 500px;
-  font-size: 16px;
-  color: #409eff;
-  font-weight: bold;
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h3 {
+    margin: 0;
+    color: var(--ep-text-color-primary);
+  }
+}
+
+.result-content {
+  .result-box {
+    margin-bottom: 20px;
+    font-family: monospace;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  background: var(--ep-bg-color);
+  border-radius: 4px;
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .label {
+      font-size: 14px;
+      color: var(--ep-text-color-secondary);
+    }
+
+    .value {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ep-color-primary);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+h1 {
+  display: block;
+  font-weight: 50;
+  line-height: 0.8em;
+  font-size: 70px;
+  font-weight: 100;
+  user-select: none;
+  line-height: 0.8em;
+  letter-spacing: 0.05em;
+  text-rendering: optimizeSpeed;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 </style>

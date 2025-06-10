@@ -21,7 +21,9 @@ onMounted(() => {
         style="display: flex; justify-content: center; align-items: center;background-color: var( --router-view-bg-color);"
       >
         <!-- div中的内容水平垂直居中 -->
-        <RouterView />
+        <transition name="fade">
+          <router-view />
+        </transition>
       </div>
     </div>
   </el-config-provider>
