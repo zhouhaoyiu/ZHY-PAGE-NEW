@@ -35,4 +35,92 @@ declare module 'vue-router/auto-routes' {
     '/nav/Tools/regexDoctor': RouteRecordInfo<'/nav/Tools/regexDoctor', '/nav/Tools/regexDoctor', Record<never, never>, Record<never, never>>,
     '/nav/Tools/uuid': RouteRecordInfo<'/nav/Tools/uuid', '/nav/Tools/uuid', Record<never, never>, Record<never, never>>,
   }
+
+  /**
+   * Route file to route info map by unplugin-vue-router.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * Each key is a file path relative to the project root with 2 properties:
+   * - routes: union of route names of the possible routes when in this page (passed to useRoute<...>())
+   * - views: names of nested views (can be passed to <RouterView name="...">)
+   *
+   * @internal
+   */
+  export interface _RouteFileInfoMap {
+    'src/pages/index.vue': {
+      routes: '/'
+      views: never
+    }
+    'src/pages/nav/AboutMe.vue': {
+      routes: '/nav/AboutMe'
+      views: never
+    }
+    'src/pages/nav/Ai.vue': {
+      routes: '/nav/Ai'
+      views: never
+    }
+    'src/pages/nav/ContactMe.vue': {
+      routes: '/nav/ContactMe'
+      views: never
+    }
+    'src/pages/nav/Home.vue': {
+      routes: '/nav/Home'
+      views: never
+    }
+    'src/pages/nav/LittleTools.vue': {
+      routes: '/nav/LittleTools'
+      views: never
+    }
+    'src/pages/nav/Lw.vue': {
+      routes: '/nav/Lw'
+      views: never
+    }
+    'src/pages/nav/PhotoWall.vue': {
+      routes: '/nav/PhotoWall'
+      views: never
+    }
+    'src/pages/nav/projectBoard.vue': {
+      routes: '/nav/projectBoard'
+      views: never
+    }
+    'src/pages/nav/Thoughts.vue': {
+      routes: '/nav/Thoughts'
+      views: never
+    }
+    'src/pages/nav/Tools/colorChina.vue': {
+      routes: '/nav/Tools/colorChina'
+      views: never
+    }
+    'src/pages/nav/Tools/colorJapan.vue': {
+      routes: '/nav/Tools/colorJapan'
+      views: never
+    }
+    'src/pages/nav/Tools/gaokao.vue': {
+      routes: '/nav/Tools/gaokao'
+      views: never
+    }
+    'src/pages/nav/Tools/keyboard.vue': {
+      routes: '/nav/Tools/keyboard'
+      views: never
+    }
+    'src/pages/nav/Tools/regexDoctor.vue': {
+      routes: '/nav/Tools/regexDoctor'
+      views: never
+    }
+    'src/pages/nav/Tools/uuid.vue': {
+      routes: '/nav/Tools/uuid'
+      views: never
+    }
+  }
+
+  /**
+   * Get a union of possible route names in a certain route component file.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * @internal
+   */
+  export type _RouteNamesForFilePath<FilePath extends string> =
+    _RouteFileInfoMap extends Record<FilePath, infer Info>
+      ? Info['routes']
+      : keyof RouteNamedMap
 }
