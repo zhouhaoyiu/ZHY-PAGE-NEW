@@ -10,6 +10,8 @@ import Previewer from 'element-plus'
 // or use cdn, uncomment cdn link in `index.html`
 
 import { ViteSSG } from 'vite-ssg'
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-ignore
 import { routes } from 'vue-router/auto-routes'
 
 import App from './App.vue'

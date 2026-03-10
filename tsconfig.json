@@ -4,11 +4,14 @@
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
     "useDefineForClassFields": true,
-    "baseUrl": ".",
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // TS 6.0+ 推荐，和Vite等打包工具原生适配
     "paths": {
-      "~/*": ["src/*"]
+      // Vue项目常规别名配置，@ 指向src目录
+      "*": ["./*"],
+      "@/*": ["./src/*"],
+      // 替代原 baseUrl: "./" 的效果，支持根目录下所有模块的解析
+      "~/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "types": [

@@ -27,11 +27,11 @@ export default defineConfig({
 
   plugins: [
     Inspect(),
-    Vue(),
     VueRouter({
       extensions: ['.vue', '.md'],
       dts: 'src/route-map.d.ts',
     }),
+    Vue(),
 
     Components({
       // allow auto load markdown components under `./src/components/`
