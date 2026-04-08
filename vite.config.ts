@@ -56,5 +56,5 @@ export default defineConfig({
     chunkSizeWarningLimit: 100000000000,
   },
 
-  assetsInclude: ['**/*.pdf', '**/*.caj'],
+  assetsInclude: ['**/*.pdf'],
 })

@@ -64,8 +64,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="ai-container">
-    <div class="chat-container">
+  <section class="page-shell ai-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Chat
+      </p>
+      <h1 class="page-title">
+        Ai
+      </h1>
+      <p class="page-description">
+        维持原有聊天交互，外观升级为左右留白更舒服的对话面板。
+      </p>
+    </header>
+
+    <div class="surface-panel chat-container">
       <div ref="messagesContainer" class="chat-messages">
         <div
           v-for="(message, index) in messages" :key="index"
@@ -93,32 +105,28 @@ onMounted(() => {
         </el-button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang='scss' scoped>
-.ai-container {
-  width: 100%;
-  height: 100%;
-  // padding: 20px;
-  background-color: #f5f7fa;
+.ai-page {
+  min-height: 100%;
+  
 }
 
 .chat-container {
-  max-width: 800px;
+  max-width: 920px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .chat-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
+  padding: 22px;
 }
 
 .message {
@@ -133,7 +141,7 @@ onMounted(() => {
 
 .message-text {
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 16px;
   max-width: 80%;
   word-break: break-word;
 }
@@ -143,20 +151,22 @@ onMounted(() => {
 }
 
 .user-message .message-text {
-  background-color: #409eff;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
   color: white;
 }
 
 .ai-message .message-text {
-  background-color: #f4f4f5;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.86);
+  color: #1e293b;
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 
 .input-container {
-  padding: 20px;
-  border-top: 1px solid #ebeef5;
+  padding: 18px 22px 22px;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
   display: flex;
   gap: 12px;
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .input-container .el-button {

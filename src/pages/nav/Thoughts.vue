@@ -32,10 +32,21 @@ const cardInfo = [
 </script>
 
 <template>
-  <div h-full class="thoughts">
-    <h1>Thoughts</h1>
+  <section class="page-shell thoughts-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Notes
+      </p>
+      <h1 class="page-title">
+        Thoughts
+      </h1>
+      <p class="page-description">
+        这是一组短想法、足迹和关于世界的理解，改成了更现代的卡片栅格。
+      </p>
+    </header>
+
     <div class="card-box">
-      <el-card v-for="(i, iIndex) in cardInfo" :key="iIndex" style="width: 270px; " class="card" shadow="hover">
+      <el-card v-for="(i, iIndex) in cardInfo" :key="iIndex" class="surface-panel card" shadow="hover">
         <!-- eslint-disable-next-line vue/no-useless-template-attributes -->
         <template #header class="card-header">
           <div>
@@ -52,26 +63,30 @@ const cardInfo = [
         </template>
       </el-card>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">
-.thoughts {
+.thoughts-page {
   width: 80%;
+  min-height: 100%;
+  
 
   .card-box {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 100%;
+    gap: 18px;
 
     .card {
-      margin: 14px 20px;
       cursor: pointer;
-      border-radius: 10px;
+      overflow: hidden;
+
       .ep-card__header {
         width: 100%;
         box-sizing: border-box;
-        background-color: rgb(0 88 255 / 81%);
-        color: white;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(14, 165, 233, 0.85));
+        color: #fff;
       }
       &:hover {
         transform: scale(1.02);

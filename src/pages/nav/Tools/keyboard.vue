@@ -32,7 +32,20 @@ function applyStatus(e: KeyboardEvent, pressed = false) {
 </script>
 
 <template>
-  <div class="leopold-fc750">
+  <section class="page-shell keyboard-page">
+    <header class="page-header keyboard-header">
+      <p class="page-eyebrow">
+        Keyboard
+      </p>
+      <h1 class="page-title">
+        Leopold FC750R PD
+      </h1>
+      <p class="page-description">
+        这是一个可按键响应的键盘展示页，保留原有交互，只优化外层展示。
+      </p>
+    </header>
+
+    <div class="leopold-fc750">
     <header>
       <div class="key-wrapper esc">
         <div class="key normal dark" data-keyCode="27">
@@ -541,15 +554,25 @@ function applyStatus(e: KeyboardEvent, pressed = false) {
       </div>
     </main>
     <input type="text" disabled>
-  </div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
-html,
-body {
+.keyboard-page {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  
 }
+
+.keyboard-header {
+  margin-bottom: 6px;
+}
+
+.keyboard-page :deep(input) {
+  display: none;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -557,14 +580,12 @@ body {
   -webkit-text-size-adjust: none;
 }
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
 }
 .leopold-fc750 {
-  width: 1020px;
-  height: 382px;
+  width: min(100%, 1020px);
+  margin: 0 auto;
+  height: auto;
   background: linear-gradient(135deg, #8f0710, #af0914);
   padding: 14px;
   display: flex;
@@ -578,6 +599,7 @@ body {
     0px 0px 40px rgba(0, 0, 0, 0.1);
   position: relative;
   border-top-right-radius: 5px;
+  transform: scale(0.98);
 }
 
 .leopold-fc750 header {
@@ -592,7 +614,7 @@ body {
 
 .leopold-fc750::before {
   width: 7px;
-  height: 100%;
+  min-height: 100%;
   background-color: #ce4c55;
   right: 100%;
   top: 0;
@@ -633,7 +655,7 @@ body {
   position: absolute;
   box-shadow: inset 0 0 8px #000;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   left: 0;
   top: 0;
 }

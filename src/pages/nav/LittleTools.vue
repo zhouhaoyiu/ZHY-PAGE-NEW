@@ -63,8 +63,19 @@ function handleGoTool(url: string) {
 </script>
 
 <template>
-  <div class="little-tools">
-    <h1>Little Tools</h1>
+  <section class="page-shell little-tools-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Utilities
+      </p>
+      <h1 class="page-title">
+        Little Tools
+      </h1>
+      <p class="page-description">
+        小工具入口整理为响应式卡片，点击即可进入对应页面。
+      </p>
+    </header>
+
     <div class="tool-box">
       <div v-for="(o, oIndex) in refToolBox" :key="oIndex" class="tool" @click="handleGoTool(o.to)">
         <div class="icon-box">
@@ -93,42 +104,41 @@ function handleGoTool(url: string) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.little-tools {
+.little-tools-page {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   overflow-y: auto;
 }
 
 .tool-box {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
 }
 
 .tool-box .tool {
   display: flex;
   box-shadow: var(--tool-bg-shadow);
-  margin: 14px 20px;
-  width: 280px;
-  height: 80px;
-  border: 1px solid #e2e8f080;
+  min-height: 98px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
   transition: all 0.2s ease-out;
   background: var(--tool-bg-color);
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
 .tool-box .tool:hover {
-  transform: scale(1.05);
-  outline: 1px solid #000;
+  transform: translateY(-4px);
+  outline: 1px solid rgba(37, 99, 235, 0.18);
 }
 
 .tool-box .tool .icon-box {
   width: 25%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 20px 0 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,12 +147,12 @@ function handleGoTool(url: string) {
 .tool-box .tool .icon-box .icon {
   width: 48px;
   height: 48px;
-  border-radius: 10px;
+  border-radius: 14px;
 }
 
 .tool-box .tool .icon-box .icon .image-slot {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -153,7 +163,7 @@ function handleGoTool(url: string) {
   display: flex;
   flex-direction: column;
   width: 75%;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 20px 20px 0;
   padding: 0 2%;
   justify-content: center;
   align-items: start;
@@ -174,7 +184,7 @@ function handleGoTool(url: string) {
   line-height: 14px;
   padding-top: 4px;
   font-weight: 400;
-  color: #9aabb8;
+  color: #64748b;
   word-break: keep-all;
   white-space: nowrap;
   overflow: hidden;

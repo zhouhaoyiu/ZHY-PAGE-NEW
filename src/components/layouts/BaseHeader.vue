@@ -6,55 +6,111 @@ import { toggleDark } from '~/composables'
 </script>
 
 <template>
-  <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" font-bold>
-    <el-menu-item index="/nav/Home">
-      <div class="flex items-center justify-center gap-2">
-        <!-- <div class="text-xl" i-ep-element-plus /> -->
-        <!-- <span font-400 color="$ep-color-primary"> 周浩宇 HaoYu Zhou </span> -->
-        <span font-400 color="$ep-color-primary"> Mystic </span>
-      </div>
-    </el-menu-item>
-    <el-menu-item>
-      <a target="_blank" href="https://www.cursor.com/cn">
+  <header class="site-header">
+    <a class="brand-item" href="/nav/Home">
+      Mystic
+    </a>
+
+    <nav class="nav-group" aria-label="External links">
+      <a class="nav-link" target="_blank" rel="noreferrer" href="https://www.cursor.com/cn">
         Cursor
       </a>
-    </el-menu-item>
-
-    <el-menu-item>
-      <a target="_blank" href="https://www.github.com/zhouhaoyiu">
+      <a class="nav-link" target="_blank" rel="noreferrer" href="https://www.github.com/zhouhaoyiu">
         Github
       </a>
-    </el-menu-item>
-    <el-menu-item>
-      <a target="_blank" href="https://www.runoob.com/">
+      <a class="nav-link" target="_blank" rel="noreferrer" href="https://www.runoob.com/">
         Runoob
       </a>
-    </el-menu-item>
-    <!-- <el-menu-item index="/nav/AboutMe" disabled route="/nav/AboutMe" @click="handleOpen('/nav/AboutMe')">
-      About Me
-    </el-menu-item>
-    <el-menu-item index="/nav/ContactMe" route="/nav/ContactMe"  @click="handleOpen('/nav/ContactMe')">
-      Contact Me
-    </el-menu-item> -->
+    </nav>
 
-    <el-menu-item h="full" @click="toggleDark()">
-      <button class="w-full cursor-pointer border-none bg-transparent" style="height: var(--ep-menu-item-height)">
-        <i inline-flex i="dark:ep-moon ep-sunny" />
-      </button>
-    </el-menu-item>
-
-    <!-- <el-menu-item h="full">
-      <a class="size-full flex items-center justify-center" :href="repository.url" target="_blank">
-        <div i-ri-github-fill />
-      </a>
-    </el-menu-item> -->
-  </el-menu>
+    <button class="theme-switch" type="button" aria-label="Toggle dark mode" @click="toggleDark()">
+      <i inline-flex i="dark:ep-moon ep-sunny" />
+    </button>
+  </header>
 </template>
 
 <style lang="scss" scoped>
-.el-menu-demo {
-  &.ep-menu--horizontal > .ep-menu-item:nth-child(1) {
-    margin-right: auto;
+.site-header {
+  margin: 12px 12px 0;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-surface);
+  box-shadow: var(--theme-shadow-sm);
+}
+
+.brand-item {
+  flex: 0 0 auto;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--theme-text-primary);
+  text-decoration: none;
+}
+
+.nav-group {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 0;
+}
+
+.nav-link {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 6px;
+  min-height: 36px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.theme-switch {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--theme-bg-surface-hover);
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme-switch:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 880px) {
+  .site-header {
+    margin: 10px 10px 0;
+    padding: 8px 10px;
+  }
+
+  .nav-group {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    margin: 8px 8px 0;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .brand-item {
+    font-size: 1rem;
+  }
+
+  .theme-switch {
+    margin-left: auto;
   }
 }
 </style>

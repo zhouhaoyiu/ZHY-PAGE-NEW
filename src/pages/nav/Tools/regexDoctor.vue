@@ -96,10 +96,20 @@ function copyResult() {
 </script>
 
 <template>
-  <div class="regex-doctor">
-    <h1>regexDoctor</h1>
+  <section class="page-shell regex-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Regex Lab
+      </p>
+      <h1 class="page-title">
+        regexDoctor
+      </h1>
+      <p class="page-description">
+        正则测试器改成双栏结构，输入、选项和结果更清晰。
+      </p>
+    </header>
 
-    <div class="content">
+    <div class="content surface-panel">
       <div class="input-section">
         <div class="input-group">
           <label for="regex-input">正则表达式</label>
@@ -181,43 +191,29 @@ function copyResult() {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang='scss' scoped>
-.regex-doctor {
+.regex-page {
   width: 100%;
-  height: 100%;
-  padding: 20px;
-  background-color: var(--ep-bg-color);
-  color: var(--ep-text-color-primary);
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 30px;
-
-  h1 {
-    font-size: 24px;
-    color: var(--ep-text-color-primary);
-    margin: 0;
-  }
+  min-height: 100%;
+  
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 18px;
 }
 
 .input-section,
 .result-section {
-  background: var(--ep-bg-color-overlay);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: var(--ep-box-shadow-light);
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 
 .input-group,
@@ -273,8 +269,8 @@ function copyResult() {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   padding: 16px;
-  background: var(--ep-bg-color);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.62);
+  border-radius: 18px;
 
   .stat-item {
     display: flex;
@@ -298,20 +294,5 @@ function copyResult() {
   .content {
     grid-template-columns: 1fr;
   }
-}
-
-h1 {
-  display: block;
-  font-weight: 50;
-  line-height: 0.8em;
-  font-size: 70px;
-  font-weight: 100;
-  user-select: none;
-  line-height: 0.8em;
-  letter-spacing: 0.05em;
-  text-rendering: optimizeSpeed;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 </style>

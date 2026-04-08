@@ -6,42 +6,49 @@ const pdfUrl = new URL('/zhy.pdf', import.meta.url).href
 </script>
 
 <template>
-  <div class="about-me">
-    <VuePdfEmbed :source="pdfUrl" />
-  </div>
+  <section class="page-shell about-me-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Profile
+      </p>
+      <h1 class="page-title">
+        About Me
+      </h1>
+      <p class="page-description">
+        这里展示我的个人简历 PDF，采用更舒展的内容容器和卡片背景，方便阅读与滚动。
+      </p>
+    </header>
+
+    <div class="surface-panel pdf-panel">
+      <VuePdfEmbed :source="pdfUrl" />
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.about-me {
+.about-me-page {
   width: 100%;
-  padding: 0 20%;
-  box-sizing: border-box;
-  height: 100%;
-  overflow-y: auto;
+  min-height: 100%;
+  
+  padding-right: 4px;
 }
 
-/* 美化滚动条 */
-.about-me::-webkit-scrollbar {
-  width: 4px;
-  margin-right: 3px;
-}
-
-.about-me::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.about-me::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.about-me::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.pdf-panel {
+  padding: clamp(14px, 2vw, 26px);
+  overflow: hidden;
 }
 
 :deep(canvas) {
   width: 100% !important;
   height: auto !important;
+}
+
+.about-me-page::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about-me-page::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
 }
 </style>

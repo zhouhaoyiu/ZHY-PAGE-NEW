@@ -47,6 +47,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/nav/Articles': RouteRecordInfo<
+      '/nav/Articles',
+      '/nav/Articles',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/nav/CaseStudy': RouteRecordInfo<
+      '/nav/CaseStudy',
+      '/nav/CaseStudy',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/nav/ContactMe': RouteRecordInfo<
       '/nav/ContactMe',
       '/nav/ContactMe',
@@ -75,6 +89,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/nav/NowBuilding': RouteRecordInfo<
+      '/nav/NowBuilding',
+      '/nav/NowBuilding',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/nav/OpenSource': RouteRecordInfo<
+      '/nav/OpenSource',
+      '/nav/OpenSource',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/nav/PhotoWall': RouteRecordInfo<
       '/nav/PhotoWall',
       '/nav/PhotoWall',
@@ -85,6 +113,20 @@ declare module 'vue-router/auto-routes' {
     '/nav/projectBoard': RouteRecordInfo<
       '/nav/projectBoard',
       '/nav/projectBoard',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/nav/Services': RouteRecordInfo<
+      '/nav/Services',
+      '/nav/Services',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/nav/TechStack': RouteRecordInfo<
+      '/nav/TechStack',
+      '/nav/TechStack',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -169,6 +211,18 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/nav/Articles.vue': {
+      routes:
+        | '/nav/Articles'
+      views:
+        | never
+    }
+    'src/pages/nav/CaseStudy.vue': {
+      routes:
+        | '/nav/CaseStudy'
+      views:
+        | never
+    }
     'src/pages/nav/ContactMe.vue': {
       routes:
         | '/nav/ContactMe'
@@ -193,6 +247,18 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/nav/NowBuilding.vue': {
+      routes:
+        | '/nav/NowBuilding'
+      views:
+        | never
+    }
+    'src/pages/nav/OpenSource.vue': {
+      routes:
+        | '/nav/OpenSource'
+      views:
+        | never
+    }
     'src/pages/nav/PhotoWall.vue': {
       routes:
         | '/nav/PhotoWall'
@@ -202,6 +268,18 @@ declare module 'vue-router/auto-routes' {
     'src/pages/nav/projectBoard.vue': {
       routes:
         | '/nav/projectBoard'
+      views:
+        | never
+    }
+    'src/pages/nav/Services.vue': {
+      routes:
+        | '/nav/Services'
+      views:
+        | never
+    }
+    'src/pages/nav/TechStack.vue': {
+      routes:
+        | '/nav/TechStack'
       views:
         | never
     }

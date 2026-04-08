@@ -5,21 +5,22 @@ const quantity = ref(1)
 const isUpperCase = ref(false)
 const separator = ref('-')
 const uuidArray = ref<string[]>([])
+const UUID_PATTERN = /[xy]/g
 
 function generateUUIDs() {
   uuidArray.value = []
   for (let i = 0; i < quantity.value; i++) {
-    let uuid = `xxxxxxxx${separator.value}xxxx${separator.value}4xxx${separator.value}yxxx${separator.value}xxxxxxxxxxxx`.replace(/[xy]/g, (c) => {
+    let uuid = `xxxxxxxx${separator.value}xxxx${separator.value}4xxx${separator.value}yxxx${separator.value}xxxxxxxxxxxx`.replace(UUID_PATTERN, (c) => {
       const r = Math.random() * 16 | 0
       const v = c === 'x' ? r : (r & 0x3 | 0x8)
       return v.toString(16)
     })
-    if (isUpperCase.value) {
+    if (isUpperCase.value)
       uuid = uuid.toUpperCase()
-    }
     uuidArray.value.push(uuid)
   }
 }
+
 function copy(text: string) {
   const input = document.createElement('input')
   input.value = text
@@ -31,86 +32,118 @@ function copy(text: string) {
 </script>
 
 <template>
-  <div class="uuid" flex items-center>
-    <h1>UUID</h1>
-    <div class="input-box">
-      <label>生成数量:</label>
-      <el-select v-model="quantity" placeholder="生成数量" prefix-icon="el-icon-plus" type="number">
-        <el-option v-for="i in 100" :key="i" :label="`${i}个`" :value="i" />
-      </el-select>
-    </div>
-    <div class="input-box">
-      <label>是否大写:</label>
-      <el-checkbox v-model="isUpperCase">
-        大写
-      </el-checkbox>
-    </div>
-    <div class="input-box">
-      <label>分隔符:</label>
-      <el-input v-model="separator" placeholder="分割每一段uuid" c>
-        <!-- <template #prepend>分隔符</template> -->
-      </el-input>
-    </div>
-    <el-button type="primary" @click="generateUUIDs">
-      生成
-    </el-button>
-    <div>
-      <div v-for="(uuid, index) in uuidArray" :key="index" style="margin:10px 0" flex items-center justify-center>
-        <el-input style="width: 500px;min-width: max-content;" :value="uuid" readonly>
-          <template #prepend>
-            <span type="primary">
-              {{ index + 1 }}
-            </span>
-          </template>
-          <template #append>
-            <div style="cursor: pointer;" type="primary" @click="copy(uuid)">
-              复制
-            </div>
-          </template>
-        </el-input>
+  <section class="page-shell uuid-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Utility
+      </p>
+      <h1 class="page-title">
+        UUID
+      </h1>
+      <p class="page-description">
+        简洁的 UUID 生成器，参数配置与结果列表分区展示。
+      </p>
+    </header>
+
+    <div class="surface-panel uuid-panel">
+      <div class="config-box">
+        <div class="input-box">
+          <label>生成数量</label>
+          <el-select v-model="quantity" placeholder="生成数量" type="number">
+            <el-option v-for="i in 100" :key="i" :label="`${i}个`" :value="i" />
+          </el-select>
+        </div>
+
+        <div class="input-box">
+          <label>是否大写</label>
+          <el-checkbox v-model="isUpperCase">
+            大写
+          </el-checkbox>
+        </div>
+
+        <div class="input-box">
+          <label>分隔符</label>
+          <el-input v-model="separator" placeholder="例如 - 或 _" />
+        </div>
+
+        <el-button type="primary" @click="generateUUIDs">
+          生成
+        </el-button>
+      </div>
+
+      <div class="uuid-list">
+        <div v-for="(uuid, index) in uuidArray" :key="index" class="uuid-row">
+          <el-input class="uuid-input" :value="uuid" readonly>
+            <template #prepend>
+              <span>{{ index + 1 }}</span>
+            </template>
+            <template #append>
+              <span class="copy-button" @click="copy(uuid)">复制</span>
+            </template>
+          </el-input>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.uuid {
+.uuid-page {
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  flex-direction: column;
+  min-height: 100%;
+  
+}
 
-  .input-box {
-    width: 400px;
-    display: flex;
-    // 靠左居中对齐
-    align-items: center;
-    justify-content: flex-start;
-    min-width: max-content;
-    margin: 10px 0;
-  }
+.uuid-panel {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.config-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-box {
+  display: grid;
+  gap: 6px;
 }
 
 label {
-  // 靠左居中对齐
-  align-items: center;
-  justify-content: flex-start;
-  text-align: left;
-  width: 100px;
-  font-size: 16px;
-  font-weight: bold;
-  margin-right: 10px;
+  font-size: 0.9rem;
+  color: #475569;
+  font-weight: 600;
 }
 
-.el-button {
-  margin-top: 10px;
+.uuid-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  max-height: 56vh;
+  
+  padding-right: 4px;
+}
+
+.uuid-row,
+.uuid-input {
   width: 100%;
 }
 
-.uuid::-webkit-scrollbar {
-  width: 6px;
-  margin-right: 5px;
+.copy-button {
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .uuid-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .uuid-list {
+    max-height: none;
+  }
 }
 </style>

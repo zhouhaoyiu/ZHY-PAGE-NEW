@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-const lwFiles = import.meta.glob('/public/lw/*.caj')
-const lwFilesKeys = Object.keys(lwFiles)
-const lwFilesToUrl = lwFilesKeys.map((key) => {
-  return key.split('/').pop()
-})
+import { lwFiles } from './lw-files'
+
+const lwFilesToUrl = [...lwFiles]
+
 function downloadFile(fileName: string) {
-  const href = import.meta.env.DEV ? `/public/lw/${fileName}` : `/lw/${fileName}`
+  const href = `/lw/${encodeURIComponent(fileName)}`
   const a = document.createElement('a')
   a.href = href
   a.download = fileName
@@ -14,58 +13,70 @@ function downloadFile(fileName: string) {
 </script>
 
 <template>
-  <div h-full class="thoughts">
-    <h1 style="position:relative;">
-      智能采矿论文
-    </h1>
+  <section class="page-shell lw-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Papers
+      </p>
+      <h1 class="page-title">
+        智能采矿论文
+      </h1>
+      <p class="page-description">
+        论文列表改为卡片式下载入口，便于浏览和点击下载。
+      </p>
+    </header>
+
     <div class="lw-box">
-      <div v-for="lw in lwFilesToUrl" :key="lw" class="lw-item" @click="downloadFile(lw as string)">
+      <div v-for="lw in lwFilesToUrl" :key="lw" class="lw-item" :title="lw" @click="downloadFile(lw as string)">
         {{ lw }}
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss">
-.thoughts {
+.lw-page {
   width: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  
 
   .lw-box {
-    overflow: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
 
     .lw-item {
-      width: 500px;
-      height: 40px;
-      padding: 10px;
-      // 不变省略号
-      white-space: nowrap;
+      min-height: 58px;
+      padding: 14px 16px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      line-height: 1.5;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 18px;
       cursor: pointer;
+      background: var(--tool-bg-color);
+      box-shadow: var(--tool-bg-shadow);
+      font-size: 0.98rem;
+      color: #1f2937;
 
       &:hover {
-        background-color: #f0f0f0;
+        transform: translateY(-3px);
+        background-color: rgba(255, 255, 255, 0.92);
       }
 
       // 如果html的class有dark，就改变背景颜色
       .dark & {
-        background-color: #333;
+        background-color: rgba(15, 23, 42, 0.92);
         color: #fff;
 
         &:hover {
-          background-color: #666;
+          background-color: rgba(30, 41, 59, 0.96);
         }
       }
     }

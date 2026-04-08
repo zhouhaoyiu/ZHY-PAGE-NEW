@@ -18,10 +18,19 @@ function copy(hex: string, name: string) {
 </script>
 
 <template>
-  <div class="color-china">
-    <h1>
-      China-colors
-    </h1>
+  <section class="page-shell color-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Color Lab
+      </p>
+      <h1 class="page-title">
+        China-colors
+      </h1>
+      <p class="page-description">
+        中国传统色彩以卡片栅格方式展示，点击色块即可复制 hex 值。
+      </p>
+    </header>
+
     <div class="color-box">
       <div v-for="colorRow in colorBoxChina" :key="colorRow[0].name" class="box-in">
         <div v-for="color in colorRow" :key="color.name" :style="{ backgroundColor: color.hex }" class="color-self">
@@ -33,57 +42,52 @@ function copy(hex: string, name: string) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.color-china {
+.color-page {
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-height: 100%;
+  
 
   .color-box {
     display: flex;
     flex-direction: column;
     align-items: start;
-    // background-color: red;
-    width: 90%;
-    gap: 20px;
+    width: 100%;
+    gap: 18px;
 
     .box-in {
       width: 100%;
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       align-items: start;
-      flex-wrap: wrap;
-      border: 2px solid #ecf0f8;
-      border-radius: 6px;
-      padding: 8px;
-      gap: 20px;
+      gap: 14px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.65);
 
       .color-self {
         font-weight: 600;
-        border-radius: 3px;
-        width: calc(100% / 8);
-        min-width: 110px;
-        height: 60px;
-        padding: 5px;
+        border-radius: 16px;
+        min-height: 92px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
         align-items: start;
         justify-content: space-between;
         color: #fff;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
 
         .color-hex {
           margin-bottom: 3px;
-          height: 16px;
-          line-height: 16px;
+          min-height: 20px;
+          line-height: 20px;
           background-color: rgb(255 255 255 / 21%);
-          padding: 2px;
-          width: calc(100% - 4px);
+          padding: 4px 6px;
+          width: calc(100% - 12px);
           text-align: start;
           cursor: pointer;
         }

@@ -19,9 +19,20 @@ imageArr.forEach((i) => {
 </script>
 
 <template>
-  <div class="photo-wall h-full w-full">
-    <h1>Photo Wall</h1>
-    <div class="flex-center flex flex-row flex-wrap flex-justify-center">
+  <section class="page-shell photo-wall-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Gallery
+      </p>
+      <h1 class="page-title">
+        Photo Wall
+      </h1>
+      <p class="page-description">
+        图片墙改成了更松弛的网格排布，方便浏览与预览。
+      </p>
+    </header>
+
+    <div class="photo-grid">
       <!-- <svg v-for="(i, index) in 16" :key="index" width="500px" height="395px" xmlns="http://www.w3.org/2000/svg" class="svg" @click="openBigImage(i)">
         <rect rx="0" ry="0" width="100%" height="100%" fill="url(#diagonalGradient)" /><defs>
           <linearGradient id="diagonalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -35,39 +46,47 @@ imageArr.forEach((i) => {
       </svg> -->
       <el-image
         v-for="(i, index) in imageUrlArr" :key="index" style="width: 330px; height: 220px"
-        class="svg" :src="i" :preview-src-list="imageUrlArr" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" show-progress preview-teleported :initial-index="index"
+        class="photo-item" :src="i" :preview-src-list="imageUrlArr" :zoom-rate="1.2" :max-scale="7" :min-scale="0.2" show-progress preview-teleported :initial-index="index"
         fit="cover"
       />
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.photo-wall {
+.photo-wall-page {
   width: 100%;
   // box-sizing: border-box;
-  height: 100%;
+  min-height: 100%;
   overflow-y: auto;
 
-  .svg {
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .photo-item {
     cursor: pointer;
-    margin: 14px 20px;
-    background-color: #f6f6f7;
-    border-radius: 12px;
-    box-shadow:
-      0 4px 6px -1px rgb(0 0 0 / 0.1),
-      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
-      transform: scale(1.02);
-      outline: 1px solid #c4c4c4;
+      transform: translateY(-4px);
+      box-shadow: 0 28px 60px rgba(15, 23, 42, 0.16);
     }
   }
 }
 
-/* 美化滚动条 */
-.photo-wall::-webkit-scrollbar {
-  width: 4px;
+.photo-wall-page::-webkit-scrollbar {
+  width: 6px;
   margin-right: 3px;
+}
+
+.photo-wall-page::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
 }
 </style>

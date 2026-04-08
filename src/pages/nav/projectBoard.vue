@@ -34,8 +34,19 @@ function openDetail(f: string) {
 </script>
 
 <template>
-  <div class="project-board">
-    <h1>ZHY'S Github Projects</h1>
+  <section class="page-shell project-board-page">
+    <header class="page-header">
+      <p class="page-eyebrow">
+        Portfolio
+      </p>
+      <h1 class="page-title">
+        ZHY'S Github Projects
+      </h1>
+      <p class="page-description">
+        这里展示我维护的一些项目，卡片样式已统一为更清爽的项目面板。
+      </p>
+    </header>
+
     <div class="project-box">
       <div v-for="(i, index) in projectBox" :key="index" class="project">
         <div class="info-box">
@@ -70,31 +81,30 @@ function openDetail(f: string) {
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang='scss' scoped>
-.project-board {
+.project-board-page {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   overflow-y: auto;
 
   .project-box {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
 
     .project {
       display: flex;
       flex-direction: column;
       box-shadow: var(--tool-bg-shadow);
-      margin: 14px 20px;
-      width: 280px;
-      height: 74px;
-      padding: 10px 5px;
-      border: 1px solid #e2e8f080;
+      min-height: 120px;
+      padding: 16px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
       transition: all 0.2s ease-out;
       background: var(--tool-bg-color);
-      border-radius: 10px;
+      border-radius: 20px;
       cursor: pointer;
 
       .info-box {
@@ -103,7 +113,7 @@ function openDetail(f: string) {
 
         .icon-box {
           width: 25%;
-          border-radius: 10px 0 0 10px;
+          border-radius: 16px 0 0 16px;
           display: flex;
           justify-content: center;
           align-items: start;
@@ -111,11 +121,11 @@ function openDetail(f: string) {
           .icon {
             width: 48px;
             height: 48px;
-            border-radius: 10px;
+            border-radius: 14px;
 
             .image-slot {
               width: 100%;
-              height: 100%;
+              min-height: 100%;
               font-size: 20px;
               display: flex;
               justify-content: center;
@@ -146,9 +156,8 @@ function openDetail(f: string) {
             font-size: 12px;
             line-height: 12px;
             padding-top: 6px;
-            color: gray;
             font-weight: 400;
-            color: #9aabb8;
+            color: #64748b;
             word-break: keep-all;
             white-space: nowrap;
             overflow: hidden;
@@ -160,7 +169,7 @@ function openDetail(f: string) {
       .link-box {
         display: flex;
         justify-content: space-around;
-        margin-top: 10px;
+        margin-top: 14px;
       }
     }
   }
