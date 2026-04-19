@@ -24,7 +24,7 @@
   --ep-color-primary: #2563eb;
   --ep-menu-hover-bg-color: var(--theme-bg-surface-hover);
   --ep-text-color-primary: var(--theme-text-primary);
-  
+
   // 过渡动画时间
   --transition-duration: 0.3s;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -36,14 +36,24 @@ html {
   background: var(--theme-bg-body);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
   font-family:
-    Lato,
-    LatoWebThin,
+    'SF Pro SC',
+    'SF Pro Text',
+    'SF Pro Icons',
+    'PingFang SC',
+    'Helvetica Neue',
+    'Helvetica',
+    'Arial',
+    sans-serif,
+    PingFang SC,
+    LatoWebItalic,
     ui-sans-serif,
     system-ui,
     sans-serif,
@@ -56,8 +66,9 @@ body {
   height: 100vh;
   color: var(--theme-text-primary);
   background: var(--theme-bg-body);
-  transition: background-color var(--transition-duration) var(--transition-timing),
-              color var(--transition-duration) var(--transition-timing);
+  transition:
+    background-color var(--transition-duration) var(--transition-timing),
+    color var(--transition-duration) var(--transition-timing);
   overflow: hidden;
 }
 
@@ -167,8 +178,9 @@ h6 {
 a {
   color: var(--ep-color-primary);
   text-decoration: none;
-  transition: color var(--transition-duration) var(--transition-timing),
-              text-decoration var(--transition-duration) var(--transition-timing);
+  transition:
+    color var(--transition-duration) var(--transition-timing),
+    text-decoration var(--transition-duration) var(--transition-timing);
 }
 a:hover {
   text-decoration: underline dotted;
@@ -299,7 +311,7 @@ code {
   &:hover {
     transform: translateY(-1px);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
