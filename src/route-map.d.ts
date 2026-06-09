@@ -20,9 +20,9 @@ import type {
 
 declare module 'vue-router' {
   interface TypesConfig {
-    ParamParsers:
-      | never
+    _ParamParsers: {}
     RouteNamedMap: import('vue-router/auto-routes').RouteNamedMap
+    _RouteFileInfoMap: import('vue-router/auto-routes')._RouteFileInfoMap
   }
 }
 
@@ -203,11 +203,15 @@ declare module 'vue-router/auto-routes' {
         | '/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/AboutMe.vue': {
       routes:
         | '/nav/AboutMe'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Ai.vue': {
@@ -215,11 +219,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Ai'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Articles.vue': {
       routes:
         | '/nav/Articles'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/CaseStudy.vue': {
@@ -227,11 +235,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/CaseStudy'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/ContactMe.vue': {
       routes:
         | '/nav/ContactMe'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Home.vue': {
@@ -239,11 +251,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Home'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/LittleTools.vue': {
       routes:
         | '/nav/LittleTools'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Lw.vue': {
@@ -251,11 +267,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Lw'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/NowBuilding.vue': {
       routes:
         | '/nav/NowBuilding'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/OpenSource.vue': {
@@ -263,11 +283,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/OpenSource'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/PhotoWall.vue': {
       routes:
         | '/nav/PhotoWall'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/projectBoard.vue': {
@@ -275,11 +299,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/projectBoard'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Services.vue': {
       routes:
         | '/nav/Services'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/TechStack.vue': {
@@ -287,11 +315,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/TechStack'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Thoughts.vue': {
       routes:
         | '/nav/Thoughts'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Tools/colorChina.vue': {
@@ -299,11 +331,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Tools/colorChina'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Tools/colorJapan.vue': {
       routes:
         | '/nav/Tools/colorJapan'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Tools/gaokao.vue': {
@@ -311,11 +347,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Tools/gaokao'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Tools/keyboard.vue': {
       routes:
         | '/nav/Tools/keyboard'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/nav/Tools/regexDoctor.vue': {
@@ -323,11 +363,15 @@ declare module 'vue-router/auto-routes' {
         | '/nav/Tools/regexDoctor'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/nav/Tools/uuid.vue': {
       routes:
         | '/nav/Tools/uuid'
       views:
+        | never
+      pathParamNames:
         | never
     }
   }
