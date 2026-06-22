@@ -1,4 +1,6 @@
 allowBuilds:
   '@parcel/watcher': true
+minimumReleaseAgeExclude:
+  - vue-pdf-embed@2.1.5
 onlyBuiltDependencies:
   - vue-demi
