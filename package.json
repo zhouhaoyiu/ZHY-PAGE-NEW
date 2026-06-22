@@ -24,7 +24,7 @@
     "glob": "^13.0.6",
     "vite-plugin-inspect": "^11.4.1",
     "vue": "^3.5.38",
-    "vue-pdf-embed": "^2.1.4",
+    "vue-pdf-embed": "^2.1.5",
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
