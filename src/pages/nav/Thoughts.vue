@@ -20,11 +20,12 @@ const cardInfo = [
     header: '关于世界的运行',
     info: {
       tag: 'p',
-      text: [`世界可以被理解为一种物质存储及其本身变化的动态系统。<br>
-      在物质层面，原子和分子是构成物质的基本单元，它们通过不同的排列组合和相互作用。<br>
-      这些基本单元本身也承载着信息，如电子的排布决定了元素的性质，而分子的结构则决定了化合物的特性。<br>
-      这种信息的存储与物质的变化紧密相连，是物质世界复杂多样性的基础。
-`],
+      text: [
+        '世界可以被理解为一种物质存储及其本身变化的动态系统。',
+        '在物质层面，原子和分子是构成物质的基本单元，它们通过不同的排列组合和相互作用。',
+        '这些基本单元本身也承载着信息，如电子的排布决定了元素的性质，而分子的结构则决定了化合物的特性。',
+        '这种信息的存储与物质的变化紧密相连，是物质世界复杂多样性的基础。',
+      ],
     },
     footer: 'About World',
   },
@@ -54,9 +55,9 @@ const cardInfo = [
           </div>
         </template>
         <div class="textbox">
-          <!-- vue/no-v-text-v-html-on-component -->
-          <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
-          <el-text v-for="(j, jIndex) in i.info.text" :key="jIndex" :tag="i.info.tag" v-html="j" />
+          <el-text v-for="(j, jIndex) in i.info.text" :key="jIndex" :tag="i.info.tag">
+            {{ j }}
+          </el-text>
         </div>
         <template #footer>
           {{ i.footer }}
