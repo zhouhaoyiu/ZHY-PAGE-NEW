@@ -29,7 +29,7 @@ const pdfUrl = new URL('/zhy.pdf', import.meta.url).href
 .about-me-page {
   width: 100%;
   min-height: 100%;
-  
+
   padding-right: 4px;
 }
 

@@ -32,7 +32,6 @@ const services = [
 <style scoped lang="scss">
 .services-page {
   min-height: 100%;
-  
 }
 
 .service-list {

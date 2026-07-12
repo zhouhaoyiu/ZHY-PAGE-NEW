@@ -32,7 +32,6 @@ const nowBuilding = [
 <style scoped lang="scss">
 .now-page {
   min-height: 100%;
-  
 }
 
 .now-list {

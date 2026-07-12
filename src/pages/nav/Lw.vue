@@ -40,7 +40,6 @@ function downloadFile(fileName: string) {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  
 
   .lw-box {
     display: grid;

@@ -31,7 +31,6 @@ const opensource = [
 <style scoped lang="scss">
 .open-source-page {
   min-height: 100%;
-  
 }
 
 .open-list {

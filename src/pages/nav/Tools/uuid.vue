@@ -91,7 +91,6 @@ function copy(text: string) {
 .uuid-page {
   width: 100%;
   min-height: 100%;
-  
 }
 
 .uuid-panel {
@@ -124,7 +123,7 @@ label {
   gap: 10px;
   min-width: 0;
   max-height: 56vh;
-  
+
   padding-right: 4px;
 }
 

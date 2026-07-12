@@ -46,8 +46,8 @@ async function sendMessage() {
       content: '这是一个模拟的AI响应。请在实际使用时替换为真实的AI API调用。',
     })
   }
-  catch (error: any) {
-    ElMessage.error('发送消息失败', error)
+  catch (error: unknown) {
+    ElMessage.error(error instanceof Error ? error.message : '发送消息失败')
   }
   finally {
     loading.value = false
@@ -111,7 +111,6 @@ onMounted(() => {
 <style lang='scss' scoped>
 .ai-page {
   min-height: 100%;
-  
 }
 
 .chat-container {

@@ -73,7 +73,7 @@ function openMail() {
 <style lang="scss" scoped>
 .contact-page {
   min-height: 100%;
-  
+
   padding-right: 4px;
 }
 

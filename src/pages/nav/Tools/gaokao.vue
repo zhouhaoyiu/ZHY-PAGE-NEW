@@ -2,12 +2,12 @@
 import { onUnmounted, ref } from 'vue'
 
 const gaokaoTime = ref('2025-06-07 08:00:00')
-const nowTime = ref(new Date().getTime())
+const nowTime = ref(Date.now())
 const timeFS = ref('2025-03-28 00:00:00')
 const time = ref(0)
 const time2 = ref(0)
 const timer = setInterval(() => {
-  nowTime.value = new Date().getTime()
+  nowTime.value = Date.now()
   time.value = new Date(gaokaoTime.value).getTime() - nowTime.value
   time2.value = new Date(timeFS.value).getTime() - nowTime.value
   if (time.value <= 0) {
@@ -73,7 +73,6 @@ function formatTime2(time: number) {
 .gaokao-page {
   width: 100%;
   min-height: 100%;
-  
 }
 
 .gaokao-panel {
