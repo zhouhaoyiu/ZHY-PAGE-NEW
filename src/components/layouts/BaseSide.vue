@@ -18,6 +18,8 @@ function getActive() {
   defaultActive.value = savedPath || window.location.pathname
 }
 
+onMounted(getActive)
+
 function handleOpen(key: string) {
   localStorage.setItem('savePath', key)
   if (window.location.pathname !== key)

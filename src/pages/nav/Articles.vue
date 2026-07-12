@@ -32,7 +32,6 @@ const articles = [
 <style scoped lang="scss">
 .articles-page {
   min-height: 100%;
-  
 }
 
 .article-list {

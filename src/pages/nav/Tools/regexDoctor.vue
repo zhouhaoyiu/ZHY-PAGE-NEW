@@ -7,11 +7,9 @@ const regex = ref('')
 // 用户输入的文本
 const text = ref('')
 // 匹配结果
-const result = ref('') as any
+const result = ref('')
 // 匹配结果的数量
 const resultCount = ref(0)
-// 匹配结果的group
-const resultGroup = ref('') as any
 // 正则表达式选项
 const regexOptions = ref({
   global: true,
@@ -51,13 +49,12 @@ function match() {
       dpkTime.value = 0
     }
 
-    result.value = res
+    result.value = res?.join('\n') || ''
     resultCount.value = res?.length || 0
-    resultGroup.value = res?.groups || '' // 被命名的捕获组 理论上结果
   }
   catch (e) {
     console.error(e)
-    ElMessage.error((e as any).message)
+    ElMessage.error(e instanceof Error ? e.message : '正则表达式执行失败')
     result.value = ''
     executionTime.value = 0
     dpkTime.value = 0
@@ -69,7 +66,6 @@ function reset() {
   text.value = ''
   result.value = ''
   resultCount.value = 0
-  resultGroup.value = ''
   executionTime.value = 0
   dpkTime.value = 0
   regexOptions.value = {
@@ -198,7 +194,6 @@ function copyResult() {
 .regex-page {
   width: 100%;
   min-height: 100%;
-  
 }
 
 .content {

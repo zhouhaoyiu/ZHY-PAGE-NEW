@@ -51,7 +51,6 @@ const caseStudies = [
 <style scoped lang="scss">
 .case-study-page {
   min-height: 100%;
-  
 }
 
 .case-card {

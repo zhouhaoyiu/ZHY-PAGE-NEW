@@ -33,7 +33,6 @@ const stackGroups = [
 <style scoped lang="scss">
 .stack-page {
   min-height: 100%;
-  
 }
 
 .stack-grid {

@@ -71,7 +71,9 @@ imageArr.forEach((i) => {
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:hover {
       transform: translateY(-4px);

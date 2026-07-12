@@ -71,7 +71,6 @@ const cardInfo = [
 .thoughts-page {
   width: 80%;
   min-height: 100%;
-  
 
   .card-box {
     display: grid;
