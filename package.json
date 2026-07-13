@@ -21,7 +21,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "@vueuse/core": "^14.3.0",
-    "element-plus": "^2.14.2",
+    "element-plus": "^2.14.3",
     "glob": "^13.0.6",
     "vite-plugin-inspect": "^11.4.1",
     "vue": "^3.5.39",
