@@ -5,16 +5,11 @@ const quantity = ref(1)
 const isUpperCase = ref(false)
 const separator = ref('-')
 const uuidArray = ref<string[]>([])
-const UUID_PATTERN = /[xy]/g
 
 function generateUUIDs() {
   uuidArray.value = []
   for (let i = 0; i < quantity.value; i++) {
-    let uuid = `xxxxxxxx${separator.value}xxxx${separator.value}4xxx${separator.value}yxxx${separator.value}xxxxxxxxxxxx`.replace(UUID_PATTERN, (c) => {
-      const r = Math.random() * 16 | 0
-      const v = c === 'x' ? r : (r & 0x3 | 0x8)
-      return v.toString(16)
-    })
+    let uuid = crypto.randomUUID().replace(/-/g, separator.value)
     if (isUpperCase.value)
       uuid = uuid.toUpperCase()
     uuidArray.value.push(uuid)
