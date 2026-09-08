@@ -34,7 +34,7 @@
     "@types/node": "^26.4.0",
     "@vitejs/plugin-vue": "^6.0.8",
     "oxlint": "1.81.0",
-    "sass": "^1.103.1",
+    "sass": "^1.104.0",
     "typescript": "^7.0.2",
     "unocss": "^66.10.0",
     "unplugin-vue-components": "^32.1.0",
