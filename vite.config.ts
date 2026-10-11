@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
+import { readFileSync } from 'node:fs'
 import Vue from '@vitejs/plugin-vue'
 
 import Unocss from 'unocss/vite'
@@ -7,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
 import VueRouter from 'vue-router/vite'
+import { siteAssets, sitePages } from './src/data/site-scope.ts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,9 +30,25 @@ export default defineConfig({
   plugins: [
     Inspect(),
     VueRouter({
-      extensions: ['.vue', '.md'],
+      extensions: ['.vue'],
+      filePatterns: sitePages,
       dts: 'src/route-map.d.ts',
     }),
+    {
+      name: 'seismic-site-assets',
+      apply: 'build',
+      generateBundle() {
+        for (const fileName of siteAssets) {
+          this.emitFile({
+            type: 'asset',
+            fileName,
+            source: readFileSync(
+              new URL(`./public/${fileName}`, import.meta.url),
+            ),
+          })
+        }
+      },
+    },
     Vue(),
 
     Components({
@@ -53,7 +71,7 @@ export default defineConfig({
     noExternal: ['element-plus'],
   },
   build: {
-    chunkSizeWarningLimit: 100000000000,
+    copyPublicDir: false,
   },
 
   assetsInclude: ['**/*.pdf'],

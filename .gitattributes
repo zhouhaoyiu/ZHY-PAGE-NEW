@@ -1,0 +1,2 @@
+# Preserve the downloaded fixed-width waveform file byte for byte.
+/scripts/waveform-data/*.V2A -text -whitespace

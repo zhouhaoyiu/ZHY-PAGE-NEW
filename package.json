@@ -16,7 +16,7 @@
     "lint:fix": "oxlint --fix --deny typescript/no-explicit-any .",
     "preview": "vite build && vite preview --host",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm run build"
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@fontsource/lato": "5.3.0",

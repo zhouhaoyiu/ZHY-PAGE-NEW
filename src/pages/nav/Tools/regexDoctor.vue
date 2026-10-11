@@ -1,292 +1,201 @@
-<script lang='ts' setup>
-import { ElMessage } from 'element-plus'
-import { ref } from 'vue'
-
-// 用户输入的正则表达式
+<script setup lang="ts">
+import { onBeforeUnmount, ref } from 'vue'
+import { runRegex } from '~/utils/regex-task'
 const regex = ref('')
-// 用户输入的文本
 const text = ref('')
-// 匹配结果
 const result = ref('')
-// 匹配结果的数量
-const resultCount = ref(0)
-// 正则表达式选项
-const regexOptions = ref({
-  global: true,
-  ignoreCase: true,
-  multiline: true,
-})
-// 执行时间（毫秒）
-const executionTime = ref(0)
-// 每1000字符执行时间（毫秒/千字符）
-const dpkTime = ref(0)
-
-function match() {
+const count = ref(0)
+const elapsed = ref(0)
+const busy = ref(false)
+const feedback = ref('')
+const global = ref(true)
+const ignoreCase = ref(true)
+const multiline = ref(true)
+let task: ReturnType<typeof runRegex> | undefined
+let revision = 0
+async function match() {
+  task?.cancel()
+  const current = ++revision
+  busy.value = true
+  feedback.value = ''
+  result.value = ''
+  count.value = 0
+  elapsed.value = 0
   try {
-    // 根据用户选择构建正则表达式选项
-    let flags = ''
-    if (regexOptions.value.global)
-      flags += 'g'
-    if (regexOptions.value.ignoreCase)
-      flags += 'i'
-    if (regexOptions.value.multiline)
-      flags += 'm'
-
-    const reg = new RegExp(regex.value, flags)
-    const startTime = performance.now()
-
-    const res = text.value.match(reg)
-
-    // 结束计时并计算执行时间
-    const endTime = performance.now()
-    executionTime.value = Number.parseFloat((endTime - startTime).toFixed(10))
-    // 计算每1000字符执行时间（DPK）
-    const textLength = text.value.length
-    if (textLength > 0) {
-      dpkTime.value = Number.parseFloat(((executionTime.value * 1000) / textLength).toFixed(2))
-    }
-    else {
-      dpkTime.value = 0
-    }
-
-    result.value = res?.join('\n') || ''
-    resultCount.value = res?.length || 0
-  }
-  catch (e) {
-    console.error(e)
-    ElMessage.error(e instanceof Error ? e.message : '正则表达式执行失败')
-    result.value = ''
-    executionTime.value = 0
-    dpkTime.value = 0
+    task = runRegex(
+      {
+        pattern: regex.value,
+        text: text.value,
+        flags:
+          (global.value ? 'g' : '') +
+          (ignoreCase.value ? 'i' : '') +
+          (multiline.value ? 'm' : ''),
+      },
+      () =>
+        new Worker(new URL('../../../utils/regex.worker.ts', import.meta.url), {
+          type: 'module',
+        }),
+    )
+    const response = await task.promise
+    if (current !== revision) return
+    result.value = response.result
+    count.value = response.count
+    elapsed.value = response.elapsed
+    feedback.value = count.value
+      ? '匹配完成。结果最多显示 20,000 字符。'
+      : '没有匹配项。'
+  } catch (error) {
+    if (current === revision)
+      feedback.value = error instanceof Error ? error.message : '匹配失败。'
+  } finally {
+    if (current === revision) busy.value = false
   }
 }
-
 function reset() {
+  revision++
+  task?.cancel()
+  busy.value = false
   regex.value = ''
   text.value = ''
   result.value = ''
-  resultCount.value = 0
-  executionTime.value = 0
-  dpkTime.value = 0
-  regexOptions.value = {
-    global: true,
-    ignoreCase: true,
-    multiline: true,
-  }
+  count.value = 0
+  elapsed.value = 0
+  feedback.value = ''
+  global.value = true
+  ignoreCase.value = true
+  multiline.value = true
 }
-
 function example() {
   regex.value = '[0-9]+'
   text.value = '123abc456def789ghi'
-  regexOptions.value.global = true
-  match()
-  // expect: [123, 456, 789]
+  global.value = true
+  void match()
 }
-
-function copyResult() {
-  if (result.value) {
-    navigator.clipboard.writeText(result.value.toString())
-    ElMessage.success('已复制到剪贴板')
+async function copy() {
+  try {
+    await navigator.clipboard.writeText(result.value)
+    feedback.value = '已复制。'
+  } catch {
+    feedback.value = '复制失败，可手动选择结果。'
   }
 }
+onBeforeUnmount(() => {
+  revision++
+  task?.cancel()
+})
 </script>
-
 <template>
-  <section class="page-shell regex-page">
+  <section class="page-shell">
     <header class="page-header">
-      <p class="page-eyebrow">
-        Regex Lab
-      </p>
-      <h1 class="page-title">
-        regexDoctor
-      </h1>
-      <p class="page-description">
-        正则测试器改成双栏结构，输入、选项和结果更清晰。
-      </p>
+      <p class="page-eyebrow">REGEX LAB</p>
+      <h1 class="page-title">正则测试</h1>
     </header>
-
-    <div class="content surface-panel">
-      <div class="input-section">
-        <div class="input-group">
-          <label for="regex-input">正则表达式</label>
-          <el-input
-            id="regex-input"
-            v-model="regex"
-            placeholder="请输入正则表达式，例如：[0-9]+"
-            :autosize="{ minRows: 3 }"
-            type="textarea"
-            class="input-box"
-          />
-        </div>
-
-        <div class="options-group">
-          <label>匹配选项</label>
-          <div class="options-container">
-            <el-checkbox v-model="regexOptions.global" label="全局匹配 (g)" />
-            <el-checkbox v-model="regexOptions.ignoreCase" label="忽略大小写 (i)" />
-            <el-checkbox v-model="regexOptions.multiline" label="多行模式 (m)" />
-          </div>
-        </div>
-
-        <div class="input-group">
-          <label for="text-input">测试文本</label>
-          <el-input
-            id="text-input"
-            v-model="text"
-            placeholder="请输入要测试的文本"
-            :autosize="{ minRows: 5 }"
-            type="textarea"
-            class="input-box"
-          />
-        </div>
-
-        <div class="button-group">
-          <el-button type="primary" @click="match">
-            测试匹配
-          </el-button>
-          <el-button @click="reset">
-            重置
-          </el-button>
-          <el-button @click="example">
-            示例
-          </el-button>
+    <div class="regex-layout">
+      <div>
+        <label for="regex-input">正则表达式</label
+        ><textarea
+          id="regex-input"
+          v-model="regex"
+          rows="3"
+          maxlength="2000"
+          spellcheck="false"
+          placeholder="[0-9]+"
+        />
+        <fieldset>
+          <legend>匹配选项</legend>
+          <label><input v-model="global" type="checkbox" />全局 (g)</label
+          ><label
+            ><input v-model="ignoreCase" type="checkbox" />忽略大小写 (i)</label
+          ><label><input v-model="multiline" type="checkbox" />多行 (m)</label>
+        </fieldset>
+        <label for="text-input">测试文本</label
+        ><textarea
+          id="text-input"
+          v-model="text"
+          rows="8"
+          maxlength="100000"
+          spellcheck="false"
+        />
+        <div class="actions">
+          <button class="button-link" :disabled="busy" @click="match">
+            {{ busy ? '计算中' : '测试匹配' }}</button
+          ><button class="plain-button" @click="reset">重置</button
+          ><button class="plain-button" @click="example">示例</button>
         </div>
       </div>
-
-      <div class="result-section">
-        <div class="result-header">
-          <h3>匹配结果</h3>
-          <el-button v-if="result" type="primary" link @click="copyResult">
+      <div>
+        <label for="regex-result">匹配结果</label
+        ><textarea id="regex-result" :value="result" readonly rows="15" />
+        <div class="result-stats">
+          <span>匹配 {{ count }} 项</span
+          ><span>{{ elapsed.toFixed(3) }} ms</span
+          ><button v-if="result" class="plain-button" @click="copy">
             复制结果
-          </el-button>
+          </button>
         </div>
-
-        <div class="result-content">
-          <el-input
-            v-model="result"
-            type="textarea"
-            :autosize="{ minRows: 5 }"
-            readonly
-            class="result-box"
-          />
-
-          <div class="stats">
-            <div v-if="resultCount > 0" class="stat-item">
-              <span class="label">匹配数量：</span>
-              <span class="value">{{ resultCount }}</span>
-            </div>
-            <div class="stat-item">
-              <span class="label">执行时间：</span>
-              <span class="value">{{ executionTime }} 毫秒</span>
-            </div>
-            <div v-if="dpkTime > 0" class="stat-item">
-              <span class="label">每千字符时间：</span>
-              <span class="value">{{ dpkTime }} 毫秒/千字符</span>
-            </div>
-          </div>
-        </div>
+        <p role="status" aria-live="polite">{{ feedback }}</p>
       </div>
     </div>
   </section>
 </template>
-
-<style lang='scss' scoped>
-.regex-page {
-  width: 100%;
-  min-height: 100%;
-}
-
-.content {
+<style scoped>
+.regex-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 32px;
 }
-
-.input-section,
-.result-section {
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 24px;
-  padding: 22px;
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
-
-.input-group,
-.options-group {
-  margin-bottom: 20px;
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--ep-text-color-primary);
-  }
-}
-
-.input-box {
+textarea {
+  display: block;
+  resize: vertical;
   width: 100%;
-  font-family: monospace;
+  padding: 12px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-surface);
+  color: var(--theme-text-primary);
+  font: 14px/1.6 monospace;
+  border-radius: 4px;
 }
-
-.options-container {
+fieldset {
+  margin: 20px 0;
+  padding: 12px;
+  border: 1px solid var(--theme-border);
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
-}
-
-.button-group {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-
-  h3 {
-    margin: 0;
-    color: var(--ep-text-color-primary);
-  }
-}
-
-.result-content {
-  .result-box {
-    margin-bottom: 20px;
-    font-family: monospace;
-  }
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.62);
-  border-radius: 18px;
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    .label {
-      font-size: 14px;
-      color: var(--ep-text-color-secondary);
-    }
-
-    .value {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--ep-color-primary);
-    }
-  }
 }
-
-@media (max-width: 768px) {
-  .content {
+fieldset label {
+  margin: 0;
+}
+legend {
+  font-size: 12px;
+}
+.actions,
+.result-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-size: 13px;
+}
+.plain-button {
+  padding: 8px 12px;
+  color: var(--theme-text-primary);
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-surface);
+}
+[role='status'] {
+  font-size: 13px;
+  margin-top: 16px;
+  color: var(--teal);
+}
+@media (max-width: 700px) {
+  .regex-layout {
     grid-template-columns: 1fr;
   }
 }
