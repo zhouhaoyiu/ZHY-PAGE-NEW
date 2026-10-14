@@ -33,7 +33,7 @@
     "@iconify-json/ep": "^1.2.4",
     "@iconify-json/ri": "^1.2.10",
     "@types/node": "^26.6.4",
-    "@vitejs/plugin-vue": "^6.0.9",
+    "@vitejs/plugin-vue": "^6.0.10",
     "oxlint": "1.87.0",
     "sass-embedded": "1.105.1",
     "typescript": "^7.0.2",
