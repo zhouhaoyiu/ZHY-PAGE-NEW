@@ -34,7 +34,7 @@
     "@iconify-json/ri": "^1.2.10",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.10",
-    "oxlint": "1.90.0",
+    "oxlint": "1.92.0",
     "sass-embedded": "1.107.1",
     "typescript": "^7.0.2",
     "unocss": "^66.12.0",
