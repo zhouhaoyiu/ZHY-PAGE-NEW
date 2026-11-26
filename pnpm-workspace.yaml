@@ -30,6 +30,9 @@ minimumReleaseAgeExclude:
   - '@unocss/vite@66.7.4'
   - unocss@66.7.4
   - undici@7.30.1
+  - vue-router@5.5.3
+  - '@types/node@26.6.11'
+  - vite@8.4.0
 shellEmulator: true
 
 trustPolicy: no-downgrade
